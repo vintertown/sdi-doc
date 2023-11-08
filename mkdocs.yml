@@ -4,3 +4,4 @@ nav:
   - DNS:
       - 'Querying DNS data': 'dns/dig.md'
       - 'Installing and configuring Bind': 'dns/bind.md'
+  - Glossary: glossary.md
