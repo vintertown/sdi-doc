@@ -1,6 +1,6 @@
 # Installing and configuring Bind
 
-## 1. Step
+## Update and Installation
 
 Update apt and install the bind service:
 
@@ -20,6 +20,8 @@ Check whether the system is active and running:
 ```ssh
 systemctl status bind9
 ```
+
+## Adjust the bind configurations
 
 Edit the file to disable recursion.
 
@@ -60,7 +62,42 @@ Add the following parameters:
 ```ssh
 zone "g8.sdia.sdi.mi.hdm-stuttgart.de" {
       type master;
-      file "/etc/bind/db.example.com";
+      file "/etc/bind/Zone/db.g8.sdia.sdi.mi.hdm-stuttgart.de";
       allow-query { any; };
 };
 ```
+
+Edit the following Zone file which is located in the created Zone folder
+
+```shh
+$TTL 86400  ; Time-to-live for the zone (1 day)
+$ORIGIN g8.sdi.mi.hdm-stuttgart.de.
+@   IN  SOA vm1.g8.sdi.mi.hdm-stuttgart.de. admin.g8.sdi.mi.hdm-stuttgart.de. (
+               2023110701  ; Serial number (YYYYMMDD##)
+               86400        ; Refresh (1 day)
+               7200         ; Retry (2 hours)
+               604800       ; Expire (1 week)
+               86400 )      ; Minimum TTL (1 day)
+
+; Name Servers
+                    IN  NS  vm1
+; Hosts
+vm1                 IN  A   141.62.75.108
+vm2                 IN  A   141.62.75.122
+www                 IN  CNAME   vm1
+cloud                  IN  CNAME   vm2
+```
+
+To test the configuration, we can dig one of the the local machines with the ip of the nameserver
+
+```ssh
+dig@141.62.75.108 vm2.g8.sdi.mi.hdm-stuttgart.de A +short
+```
+
+The following output is showing:
+
+```
+141.62.75.122
+```
+
+This is the IP adress of our second virtual machine. So the record is working.
