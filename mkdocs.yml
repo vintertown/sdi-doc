@@ -2,6 +2,10 @@ site_name: My Docs
 nav:
   - Home: index.md
   - DNS:
+      - 'General': 'dns/general.md'
       - 'Querying DNS data': 'dns/dig.md'
       - 'Installing and configuring Bind': 'dns/bind.md'
+      - 'Reverse lookup': 'dns/reverse.md'
+  - LDAP:
+      - 'General': 'ldap/general.md'
   - Glossary: glossary.md
