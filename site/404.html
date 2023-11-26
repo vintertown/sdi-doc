@@ -31,10 +31,20 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="/." class="nav-link">Welcome to MkDocs</a>
+                                <a href="/." class="nav-link">Home</a>
                             </li>
-                            <li class="navitem">
-                                <a href="/dns/" class="nav-link">DNS</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DNS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="/dns/dig/" class="dropdown-item">Querying DNS data</a>
+</li>
+                                    
+<li>
+    <a href="/dns/bind/" class="dropdown-item">Installing and configuring Bind</a>
+</li>
+                                </ul>
                             </li>
                         </ul>
 
