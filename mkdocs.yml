@@ -8,6 +8,7 @@ nav:
       - 'Reverse lookup': 'dns/reverse.md'
       - 'Forwarders': 'dns/forwarders.md'
       - 'Mail Exchange': 'dns/mail-exchange.md'
+      - 'Further Excercises': 'dns/further-exercises.md'
   - LDAP:
       - 'General': 'ldap/general.md'
   - Glossary: glossary.md
