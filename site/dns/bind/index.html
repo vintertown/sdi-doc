@@ -38,13 +38,33 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
+    <a href="../general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
     <a href="../dig/" class="dropdown-item">Querying DNS data</a>
 </li>
                                     
 <li>
     <a href="./" class="dropdown-item active">Installing and configuring Bind</a>
 </li>
+                                    
+<li>
+    <a href="../reverse/" class="dropdown-item">Reverse lookup</a>
+</li>
                                 </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">LDAP <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../ldap/general/" class="dropdown-item">General</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../glossary/" class="nav-link">Glossary</a>
                             </li>
                         </ul>
 
@@ -60,7 +80,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../reverse/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -84,6 +104,14 @@
             
             <li class="nav-item" data-level="1"><a href="#installing-and-configuring-bind" class="nav-link">Installing and configuring Bind</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#update-and-installation" class="nav-link">Update and Installation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#adjust-the-bind-configurations" class="nav-link">Adjust the bind configurations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -91,7 +119,73 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="installing-and-configuring-bind">Installing and configuring Bind</h1></div>
+<h1 id="installing-and-configuring-bind">Installing and configuring Bind</h1>
+<h2 id="update-and-installation">Update and Installation</h2>
+<p>Update apt and install the bind service:</p>
+<pre><code class="language-ssh">apt update
+apt install bind9 bind9utils bind9-doc
+</code></pre>
+<p>To check whether the installation was successful run the following command:</p>
+<pre><code class="language-ssh">named -v
+</code></pre>
+<p>Check whether the system is active and running:</p>
+<pre><code class="language-ssh">systemctl status bind9
+</code></pre>
+<h2 id="adjust-the-bind-configurations">Adjust the bind configurations</h2>
+<p>Edit the file to disable recursion.</p>
+<pre><code class="language-ssh">nano /etc/bind/named.conf.options
+</code></pre>
+<p>Add the following lines to the named.conf.options file:</p>
+<pre><code class="language-ssh"> // hide version number from clients for security reasons.
+ version &quot;not currently available&quot;;
+
+ // disable recursion on authoritative DNS server.
+ recursion no;
+
+ // enable the query log
+ querylog yes;
+
+ // disallow zone transfer
+ allow-transfer { none; };
+</code></pre>
+<p>Restart bind to confirm the set options:</p>
+<pre><code class="language-ssh">systemctl restart bind9
+</code></pre>
+<p>To configure zones edit the following file:</p>
+<pre><code class="language-ssh">nano /etc/bind/named.conf.local
+</code></pre>
+<p>Add the following parameters:</p>
+<pre><code class="language-ssh">zone &quot;g8.sdia.sdi.mi.hdm-stuttgart.de&quot; {
+      type master;
+      file &quot;/etc/bind/Zone/db.g8.sdia.sdi.mi.hdm-stuttgart.de&quot;;
+      allow-query { any; };
+};
+</code></pre>
+<p>Edit the following Zone file which is located in the created Zone folder</p>
+<pre><code class="language-shh">$TTL 86400  ; Time-to-live for the zone (1 day)
+$ORIGIN g8.sdi.mi.hdm-stuttgart.de.
+@   IN  SOA vm1.g8.sdi.mi.hdm-stuttgart.de. admin.g8.sdi.mi.hdm-stuttgart.de. (
+               2023110701  ; Serial number (YYYYMMDD##)
+               86400        ; Refresh (1 day)
+               7200         ; Retry (2 hours)
+               604800       ; Expire (1 week)
+               86400 )      ; Minimum TTL (1 day)
+
+; Name Servers
+                    IN  NS  vm1
+; Hosts
+vm1                 IN  A   141.62.75.108
+vm2                 IN  A   141.62.75.122
+www                 IN  CNAME   vm1
+cloud                  IN  CNAME   vm2
+</code></pre>
+<p>To test the configuration, we can dig one of the the local machines with the ip of the nameserver</p>
+<pre><code class="language-ssh">dig@141.62.75.108 vm2.g8.sdi.mi.hdm-stuttgart.de A +short
+</code></pre>
+<p>The following output is showing:</p>
+<pre><code>141.62.75.122
+</code></pre>
+<p>This is the IP adress of our second virtual machine. So the record is working.</p></div>
             </div>
         </div>
 

@@ -6,6 +6,7 @@ nav:
       - 'Querying DNS data': 'dns/dig.md'
       - 'Installing and configuring Bind': 'dns/bind.md'
       - 'Reverse lookup': 'dns/reverse.md'
+      - 'Forwarders': 'dns/forwarders.md'
   - LDAP:
       - 'General': 'ldap/general.md'
   - Glossary: glossary.md
