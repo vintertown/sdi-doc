@@ -7,6 +7,7 @@ nav:
       - 'Installing and configuring Bind': 'dns/bind.md'
       - 'Reverse lookup': 'dns/reverse.md'
       - 'Forwarders': 'dns/forwarders.md'
+      - 'Mail Exchange': 'dns/mail-exchange.md'
   - LDAP:
       - 'General': 'ldap/general.md'
   - Glossary: glossary.md
