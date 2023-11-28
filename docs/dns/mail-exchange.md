@@ -4,7 +4,7 @@
 
 A Mail Exchange (MX) record is a type of DNS (Domain Name System) record that specifies the mail servers responsible for receiving email on behalf of a domain.
 
-## Exercise
+## Example
 
 Provide a mail exchange record pointing to mx1.hdm-stuttgart.de. Test this configuration using dig accordingly.
 

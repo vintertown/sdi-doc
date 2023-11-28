@@ -1,6 +1,10 @@
 # Installing and configuring Bind
 
-## Update and Installation
+## What is bind?
+
+[BIND](/acronyms) can function as both an authoritative [DNS](/acronyms) server for a zone and a [DNS](/acronyms) resolver simultaneously. It is open source and commonly used for hosting authoritative [DNS](/acronyms) servers.
+
+## Setup
 
 Update apt and install the bind service:
 
@@ -62,12 +66,12 @@ Add the following parameters:
 ```ssh
 zone "g8.sdia.sdi.mi.hdm-stuttgart.de" {
       type master;
-      file "/etc/bind/Zone/db.g8.sdia.sdi.mi.hdm-stuttgart.de";
+      file "/etc/bind/Zones/db.g8.sdia.sdi.mi.hdm-stuttgart.de";
       allow-query { any; };
 };
 ```
 
-Edit the following Zone file which is located in the created Zone folder
+Edit the following Zone file which is located in the created `Zones` folder
 
 ```shh
 $TTL 86400  ; Time-to-live for the zone (1 day)
@@ -100,4 +104,9 @@ The following output is showing:
 141.62.75.122
 ```
 
-This is the IP adress of our second virtual machine. So the record is working.
+This is the IP adress of our second virtual machine. This displays the record is working.
+
+## References
+
+1. [isc.org/bind/](https://www.isc.org/bind/)
+2. [linuxbabe.com/debian/authoritative-dns-server-debian-10-buster-bind9](https://www.linuxbabe.com/debian/authoritative-dns-server-debian-10-buster-bind9)

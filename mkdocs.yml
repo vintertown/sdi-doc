@@ -11,4 +11,4 @@ nav:
       - 'Further Excercises': 'dns/further-exercises.md'
   - LDAP:
       - 'General': 'ldap/general.md'
-  - Glossary: glossary.md
+  - Acronyms: acronyms.md
