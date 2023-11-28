@@ -15,7 +15,7 @@ can an internet user access a website by entering a [URL](/acronyms) or send an 
 4. Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given [IP](/acronyms) address.
 5. The top-level domain server provides informations about the authoritative [DNS](/acronyms) server. The authoritative [DNS](/acronyms) server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the [IP](/acronyms) address associated with the specific host name.
 
-![DNS Namensbaum](/media/namensbaum.webp)
+![DNS Namensbaum](https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp)
 
 **Difference between DNS server and DNS resolver**
 
