@@ -52,6 +52,18 @@
 <li>
     <a href="../reverse/" class="dropdown-item">Reverse lookup</a>
 </li>
+                                    
+<li>
+    <a href="../forwarders/" class="dropdown-item">Forwarders</a>
+</li>
+                                    
+<li>
+    <a href="../mail-exchange/" class="dropdown-item">Mail Exchange</a>
+</li>
+                                    
+<li>
+    <a href="../further-exercises/" class="dropdown-item">Further Excercises</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -64,7 +76,7 @@
                                 </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../../glossary/" class="nav-link">Glossary</a>
+                                <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
                         </ul>
 
@@ -104,11 +116,19 @@
             
             <li class="nav-item" data-level="1"><a href="#installing-and-configuring-bind" class="nav-link">Installing and configuring Bind</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#update-and-installation" class="nav-link">Update and Installation</a>
+            <li class="nav-item" data-level="2"><a href="#what-is-bind" class="nav-link">What is bind?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setup" class="nav-link">Setup</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#adjust-the-bind-configurations" class="nav-link">Adjust the bind configurations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -120,7 +140,9 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="installing-and-configuring-bind">Installing and configuring Bind</h1>
-<h2 id="update-and-installation">Update and Installation</h2>
+<h2 id="what-is-bind">What is bind?</h2>
+<p><a href="/acronyms">BIND</a> can function as both an authoritative <a href="/acronyms">DNS</a> server for a zone and a <a href="/acronyms">DNS</a> resolver simultaneously. It is open source and commonly used for hosting authoritative <a href="/acronyms">DNS</a> servers.</p>
+<h2 id="setup">Setup</h2>
 <p>Update apt and install the bind service:</p>
 <pre><code class="language-ssh">apt update
 apt install bind9 bind9utils bind9-doc
@@ -157,11 +179,11 @@ apt install bind9 bind9utils bind9-doc
 <p>Add the following parameters:</p>
 <pre><code class="language-ssh">zone &quot;g8.sdia.sdi.mi.hdm-stuttgart.de&quot; {
       type master;
-      file &quot;/etc/bind/Zone/db.g8.sdia.sdi.mi.hdm-stuttgart.de&quot;;
+      file &quot;/etc/bind/Zones/db.g8.sdia.sdi.mi.hdm-stuttgart.de&quot;;
       allow-query { any; };
 };
 </code></pre>
-<p>Edit the following Zone file which is located in the created Zone folder</p>
+<p>Edit the following Zone file which is located in the created <code>Zones</code> folder</p>
 <pre><code class="language-shh">$TTL 86400  ; Time-to-live for the zone (1 day)
 $ORIGIN g8.sdi.mi.hdm-stuttgart.de.
 @   IN  SOA vm1.g8.sdi.mi.hdm-stuttgart.de. admin.g8.sdi.mi.hdm-stuttgart.de. (
@@ -185,7 +207,12 @@ cloud                  IN  CNAME   vm2
 <p>The following output is showing:</p>
 <pre><code>141.62.75.122
 </code></pre>
-<p>This is the IP adress of our second virtual machine. So the record is working.</p></div>
+<p>This is the IP adress of our second virtual machine. This displays the record is working.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.isc.org/bind/">isc.org/bind/</a></li>
+<li><a href="https://www.linuxbabe.com/debian/authoritative-dns-server-debian-10-buster-bind9">linuxbabe.com/debian/authoritative-dns-server-debian-10-buster-bind9</a></li>
+</ol></div>
             </div>
         </div>
 

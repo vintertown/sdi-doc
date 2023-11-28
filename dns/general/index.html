@@ -52,6 +52,18 @@
 <li>
     <a href="../reverse/" class="dropdown-item">Reverse lookup</a>
 </li>
+                                    
+<li>
+    <a href="../forwarders/" class="dropdown-item">Forwarders</a>
+</li>
+                                    
+<li>
+    <a href="../mail-exchange/" class="dropdown-item">Mail Exchange</a>
+</li>
+                                    
+<li>
+    <a href="../further-exercises/" class="dropdown-item">Further Excercises</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -64,7 +76,7 @@
                                 </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../../glossary/" class="nav-link">Glossary</a>
+                                <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
                         </ul>
 
@@ -129,29 +141,31 @@
 
 <h1 id="dns">DNS</h1>
 <h2 id="what-is-dns">What is DNS?</h2>
-<p><a href="/glossary">DNS</a>, or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical <a href="/glossary">IP</a> addresses. It is indispencible for accessing services on the internet. Only with the <a href="/glossary">DNS</a>
-can an internet user access a website by entering a <a href="/glossary">URL</a> or send an email with a domain ending (e.g. @hdm-stuttgart.de).</p>
+<p><a href="/acronyms">DNS</a>, or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical <a href="/acronyms">IP</a> addresses. It is indispencible for accessing services on the internet. Only with the <a href="/acronyms">DNS</a>
+can an internet user access a website by entering a <a href="/acronyms">URL</a> or send an email with a domain ending (e.g. @hdm-stuttgart.de).</p>
 <h2 id="how-does-dns-work">How does DNS work?</h2>
-<p><a href="/glossary">DNS</a> works through a hirahierarchical, distributed order.</p>
+<p><a href="/acronyms">DNS</a> works through a hirahierarchical, distributed order.</p>
 <ol>
-<li>A user enters an <a href="/glossary">URL</a> (e.g., www.beispieldomain.de) into a web browser or another application.</li>
-<li>(When cache is not empty) The user's device checks its local <a href="/glossary">DNS</a> resolver (typically provided by the Internet Service Provider or configured manually). This resolver may have a cache of recently resolved domain names.</li>
-<li>When there is no cache available the root server is the first step in translating the given host names into <a href="/glossary">IP</a> addresses. It will point to the top-level domain of the given domain name.</li>
-<li>Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given <a href="/glossary">IP</a> address.</li>
-<li>The top-level domain server provides informations about the authoritative <a href="/glossary">DNS</a> server. The authoritative <a href="/glossary">DNS</a> server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the <a href="/glossary">IP</a> address associated with the specific host name.</li>
+<li>A user enters an <a href="/acronyms">URL</a> (e.g., www.beispieldomain.de) into a web browser or another application.</li>
+<li>(When cache is not empty) The user's device checks its local <a href="/acronyms">DNS</a> resolver (typically provided by the Internet Service Provider or configured manually). This resolver may have a cache of recently resolved domain names.</li>
+<li>When there is no cache available the root server is the first step in translating the given host names into <a href="/acronyms">IP</a> addresses. It will point to the top-level domain of the given domain name.</li>
+<li>Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given <a href="/acronyms">IP</a> address.</li>
+<li>The top-level domain server provides informations about the authoritative <a href="/acronyms">DNS</a> server. The authoritative <a href="/acronyms">DNS</a> server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the <a href="/acronyms">IP</a> address associated with the specific host name.</li>
 </ol>
 <p><img alt="DNS Namensbaum" src="/media/namensbaum.webp" /></p>
-<h4 id="good-to-know">Good to know</h4>
+<p><strong>Difference between DNS server and DNS resolver</strong></p>
+<p>A <a href="/acronyms">DNS</a> resolver is a service that provides an IP address for a domain name on request. It is the counter part to <a href="/acronyms">NS</a>, which contain the actual <a href="/acronyms">DNS</a> information</p>
+<p><strong>Good to know</strong></p>
 <p>DENIC operates a worldwide network of name servers to provide the name service for the German top-level domain .de and the German ENUM domain .9.4.e164.arpa. This currently comprises 19 locations in 17 cities on five continents.</p>
 <h2 id="types-of-dns">Types of DNS</h2>
 <ul>
-<li>A (Address) Record: Maps a domain to an IPv4 address.</li>
-<li>AAAA (IPv6 Address) Record: Maps a domain to an IPv6 address.</li>
-<li>CNAME (Canonical Name) Record: Alias of one domain to another.</li>
-<li>MX (Mail Exchange) Record: Specifies mail servers responsible for receiving emails for the domain.</li>
-<li>NS (Name Server) Record: Indicates authoritative DNS servers for the domain.</li>
-<li>PTR (Pointer) Record: Used for reverse DNS lookups.</li>
-<li>SOA (Start of Authority) Record: Contains information about the domain and the zone.</li>
+<li><a href="/acronyms">A</a> Record: Maps a domain to an IPv4 address.</li>
+<li><a href="/acronyms">AAAA</a> Record: Maps a domain to an IPv6 address.</li>
+<li><a href="/acronyms">CNAME</a> Record: Alias of one domain to another.</li>
+<li><a href="/acronyms">MX</a> Record: Specifies mail servers responsible for receiving emails for the domain.</li>
+<li><a href="/acronyms">NS</a> Record: Indicates authoritative DNS servers for the domain.</li>
+<li><a href="/acronyms">PTR</a> Record: Used for reverse DNS lookups.</li>
+<li><a href="/acronyms">SOA</a> Record: Contains information about the domain and the zone.</li>
 </ul>
 <h2 id="references">References</h2>
 <ol>

@@ -52,6 +52,18 @@
 <li>
     <a href="../reverse/" class="dropdown-item">Reverse lookup</a>
 </li>
+                                    
+<li>
+    <a href="../forwarders/" class="dropdown-item">Forwarders</a>
+</li>
+                                    
+<li>
+    <a href="../mail-exchange/" class="dropdown-item">Mail Exchange</a>
+</li>
+                                    
+<li>
+    <a href="../further-exercises/" class="dropdown-item">Further Excercises</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -64,7 +76,7 @@
                                 </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../../glossary/" class="nav-link">Glossary</a>
+                                <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
                         </ul>
 
@@ -104,7 +116,15 @@
             
             <li class="nav-item" data-level="1"><a href="#querying-dns-data" class="nav-link">Querying DNS data</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#catch-the-records" class="nav-link">Catch the Records</a>
+            <li class="nav-item" data-level="2"><a href="#what-is-dig" class="nav-link">What is dig?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -116,16 +136,24 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="querying-dns-data">Querying DNS data</h1>
-<h2 id="catch-the-records">Catch the Records</h2>
+<h2 id="what-is-dig">What is dig?</h2>
+<p><a href="/acronyms">dig</a> is a programm/command that is mainly used to analyse and check <a href="/acronyms">DNS</a> servers and query information from it. It has the following syntax:</p>
+<pre><code class="language-ssh">dig [@Server] [Domain] [Type] [-x IP-Address]
+</code></pre>
+<p>The server is not necessary, when you only want general <a href="/acronyms">DNS</a> information for an address (see examples above).</p>
+<h2 id="example">Example</h2>
+<p><a href="/acronyms">CNAME</a> Record</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig www.natan-cafeandbar.com CNAME +short
 
 natan-cafeandbar.com.
 </code></pre>
+<p><a href="/acronyms">A</a> Record</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig www.natan-cafeandbar.com A +short
 
 natan-cafeandbar.com.
 81.169.145.70
 </code></pre>
+<p><a href="/acronyms">MX</a> Record</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig www.natan-cafeandbar.com MX +short
 
 natan-cafeandbar.com.
@@ -134,16 +162,22 @@ natan-cafeandbar.com.
 20 alt1.aspmx.l.google.com.
 10 aspmx.l.google.com.
 </code></pre>
+<p><a href="/acronyms">NS</a> Record</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig www.natan-cafeandbar.com NS +short
 
 natan-cafeandbar.com.
 shades20.rzone.de.
 docks02.rzone.de.
 </code></pre>
+<p>Reverse Lookup</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig -x 81.169.145.70 +short
 
 w06.rzone.de.
-</code></pre></div>
+</code></pre>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://wiki.ubuntuusers.de/dig/">wiki.ubuntuusers.de/dig/</a></li>
+</ol></div>
             </div>
         </div>
 
