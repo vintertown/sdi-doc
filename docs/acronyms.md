@@ -12,3 +12,6 @@
 - PTR = Pointer
 - SOA = Start of Authority
 - BIND = Berkeley Internet Name Domain
+- arpa = address and routing parameters
+- DNSSEC = Domain Name System Security Extensions
+- ISP = Internet Service Provider

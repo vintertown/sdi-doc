@@ -95,7 +95,7 @@ cloud                  IN  CNAME   vm2
 To test the configuration, we can dig one of the the local machines with the ip of the nameserver
 
 ```ssh
-dig@141.62.75.108 vm2.g8.sdi.mi.hdm-stuttgart.de A +short
+dig @141.62.75.108 vm2.g8.sdi.mi.hdm-stuttgart.de A +short
 ```
 
 The following output is showing:

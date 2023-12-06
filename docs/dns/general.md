@@ -9,7 +9,7 @@ can an internet user access a website by entering a [URL](/acronyms) or send an 
 
 [DNS](/acronyms) works through a hirahierarchical, distributed order.
 
-1. A user enters an [URL](/acronyms) (e.g., www.beispieldomain.de) into a web browser or another application.
+1. A user enters an [URL](/acronyms) (e.g., www.beispieldomain.de) into a web browser.
 2. (When cache is not empty) The user's device checks its local [DNS](/acronyms) resolver (typically provided by the Internet Service Provider or configured manually). This resolver may have a cache of recently resolved domain names.
 3. When there is no cache available the root server is the first step in translating the given host names into [IP](/acronyms) addresses. It will point to the top-level domain of the given domain name.
 4. Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given [IP](/acronyms) address.
@@ -19,7 +19,7 @@ can an internet user access a website by entering a [URL](/acronyms) or send an 
 
 **Difference between DNS server and DNS resolver**
 
-A [DNS](/acronyms) resolver is a service that provides an IP address for a domain name on request. It is the counter part to [NS](/acronyms), which contain the actual [DNS](/acronyms) information
+A [DNS](/acronyms) resolver is a service that provides an [IP](/acronyms) address for a domain name on request. It is the counter part to [NS](/acronyms), which contain the actual [DNS](/acronyms) information
 
 **Good to know**
 
