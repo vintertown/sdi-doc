@@ -15,3 +15,7 @@
 - arpa = address and routing parameters
 - DNSSEC = Domain Name System Security Extensions
 - ISP = Internet Service Provider
+- SMTP = Simple Mail Transfer Protocol
+- LDAP = Lightweight Directory Access Protocol
+- slapd = Stand-alone LDAP Daemon
+- DIT = Directory Information Tree

@@ -11,4 +11,6 @@ nav:
       - 'Further Excercises': 'dns/further-exercises.md'
   - LDAP:
       - 'General': 'ldap/general.md'
+      - 'Browsing LDAP': 'ldap/browsing.md'
+      - 'Installing and configuring OpenLDAP': 'ldap/set-up.md'
   - Acronyms: acronyms.md

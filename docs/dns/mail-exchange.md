@@ -2,48 +2,39 @@
 
 ## What is Mail Exchange (MX Record)?
 
-A Mail Exchange (MX) record is a type of DNS (Domain Name System) record that specifies the mail servers responsible for receiving email on behalf of a domain.
+A Mail Exchange ([MX](/acronyms)) record is a type of [DNS](/acronyms) record that specifies the mail servers responsible for receiving email on behalf of a domain. The [MX](/acronyms) record specifies how email messages should be forwarded in accordance with the Simple Mail Transfer Protocol ([SMTP](/acronyms), the standard protocol for all email). Like CNAME records, an MX record must always point to another domain.
 
-## Example
+## How to setup a MX Record
 
-Provide a mail exchange record pointing to mx1.hdm-stuttgart.de. Test this configuration using dig accordingly.
+In order to configure our [MX](/acronyms) record that it points towards mx1.hdm-stuttgart.de, we can add the following parameters to the db.g8.sdi.mi.hdm-stuttgart.de (/etc/bind/Zones/db.g8.sdi.mi.hdm-stuttgart.de) file.
 
-Caveat: Configuring a client machine using your name server and sending a mail to xy123@g7.sdi.mi.hdm-stuttgart.de won't actually work since mail.hdm-stuttgart.de will reject mails being sent to any domain other than certain subdomain of hdm-stuttgart.de.
+```ssh
+nano /etc/bind/Zones/db.g8.sdi.mi.hdm-stuttgart.de
+```
+
+and add the following parameters:
 
 ```ssh
 ...
 
 ; MX Record
-@       IN    MX    10 mx1.hdm-stuttgart.de.
+g8.sdi.mi.hdm-stuttgart.de.   IN   MX   10 mx1.hdm-stuttgart.de.
 ```
 
-Test configurations with
+The "priority" numbers in front of the domains for these [MX](/acronyms) records indicate the preference; the lower "priority" value is preferred. The server always tries mailhost1 first, as 10 is lower than 20. If sending a message fails, the server chooses mailhost2 by default.
+
+Test whether the set record points towards the mx1.hdm-stuttgart.de mail server with:
 
 ```ssh
-dig vm1.g8.sdi.mi.hdm-stuttgart.de
+dig @141.62.75.108 g8.sdi.mi.hdm-stuttgart.de MX +short
 ```
 
 Answer
 
 ```ssh
-; <<>> DiG 9.18.19-1~deb12u1-Debian <<>> vm1.g8.sdi.mi.hdm-stuttgart.de MX
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 16537
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;vm1.g8.sdi.mi.hdm-stuttgart.de.	IN	MX
-
-;; AUTHORITY SECTION:
-g8.sdi.mi.hdm-stuttgart.de. 10265 IN	SOA	nssdi.mi.hdm-stuttgart.de. goik.hdm-stuttgart.de. 2022110842 14400 7200 1209600 43200
-
-;; Query time: 0 msec
-;; SERVER: 141.62.64.21#53(141.62.64.21) (UDP)
-;; WHEN: Mon Nov 27 17:06:28 CET 2023
-;; MSG SIZE  rcvd: 106
+10 mx1.hdm-stuttgart.de.
 ```
 
 ## References
+
+1. [www.cloudflare.com/de-de/learning/dns/dns-records/dns-mx-record/](https://www.cloudflare.com/de-de/learning/dns/dns-records/dns-mx-record/)

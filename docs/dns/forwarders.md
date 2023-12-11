@@ -54,7 +54,7 @@ Forward only means that all external queries by default are being forwarded.
 service bind9 restart;
 ```
 
-Make sure to restart or reload your DNS server after making changes to the configuration to apply the new settings.
+Make sure to restart or reload your [DNS](/acronyms) server after making changes to the configuration to apply the new settings.
 
 ```ssh
 dig @141.62.75.108 w3.org A +short
