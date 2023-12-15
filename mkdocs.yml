@@ -13,4 +13,5 @@ nav:
       - 'General': 'ldap/general.md'
       - 'Browsing LDAP': 'ldap/browsing.md'
       - 'Installing and configuring OpenLDAP': 'ldap/set-up.md'
+      - 'Populating your DIT': 'ldap/populating.md'
   - Acronyms: acronyms.md
