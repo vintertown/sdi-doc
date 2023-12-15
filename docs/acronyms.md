@@ -19,3 +19,5 @@
 - LDAP = Lightweight Directory Access Protocol
 - slapd = Stand-alone LDAP Daemon
 - DIT = Directory Information Tree
+- HMAC = Hash Message Authentication Code
+- TTL = Time To Live

@@ -8,7 +8,7 @@ nav:
       - 'Reverse lookup': 'dns/reverse.md'
       - 'Forwarders': 'dns/forwarders.md'
       - 'Mail Exchange': 'dns/mail-exchange.md'
-      - 'Further Excercises': 'dns/further-exercises.md'
+      - 'Transfer DNS configurations': 'dns/transfer-dns-configurations.md'
   - LDAP:
       - 'General': 'ldap/general.md'
       - 'Browsing LDAP': 'ldap/browsing.md'

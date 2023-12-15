@@ -14,15 +14,32 @@ We need to reconfigure [DIT](/acronyms)
 dpkg-reconfigure slapd
 ```
 
-After going through the installation steps we have created this file:
+1. First option: We need a start configuration for the database. Therefore we click on `No`.
+2. Second option: The DNS domain name is used to generate the base DN of your LDAP directory. We use `betrayer.com`, so our base DN will be `dc=betrayer, dc=com` We set the name of our organization to `betrayer.com`.
+3. Third option: Now we can choose a password for the administrator LDAP-directory.
+4. Forth option: We want to store the database when it's deleted so we choose `yes`.
+5. Fifth option: We also move the old database with `yes`.
+
+As a result we get:
 
 ```ssh
-/etc/ldap/ldap.conf
+Backing up /etc/ldap/slapd.d in /var/backups/slapd-2.5.13+dfsg-5... done.
+  Moving old database directory to /var/backups:
+  - directory unknown... done.
+  Creating initial configuration... done.
+  Creating LDAP directory... done.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Omitting slapd configuration as requested.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Omitting slapd configuration as requested.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Backing up /etc/ldap/slapd.d in /var/backups/slapd-2.5.13+dfsg-5... done.
+  Moving old database directory to /var/backups:
+  - directory unknown... done.
+  Creating initial configuration... done.
+  Creating LDAP directory... done.
 ```
 
-After the creation you can set the following instructions within file:
+The LDAP server is configured. We tested the connection using Apache Directory Studio. As a host name we used vm1.g8.sdi.mi.hdm-stuttgart.de. We do not use an encryption method because we do not have a valid certificate.
 
-```ssh
-BASE dc=betrayer,dc=com
-URI ldap://ldap01.mi.hdm-stuttgart.de
-```
+For authentication we use simple authentication. The string `dc=betrayer,dc=com` is the "domain" for the [LDAP](/acronyms) tree. Since we have registered the admin with the password in the `slapd config` we can use `cn=admin` to authenticate.
