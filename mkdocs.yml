@@ -14,4 +14,9 @@ nav:
       - 'Browsing LDAP': 'ldap/browsing.md'
       - 'Installing and configuring OpenLDAP': 'ldap/set-up.md'
       - 'Populating your DIT': 'ldap/populating.md'
+      - 'Testing a bind operation as non-admin user': 'ldap/testing-bind-operation.md'
+      - 'Extending an existing entry': 'ldap/extending-an-existing-entry.md'
+      - 'Filter based search': 'ldap/filter-based-search.md'
+      - 'Accessing LDAP data by using a mail client': 'ldap/mail-client.md'
+      - 'LDAP Config': 'ldap/config.md'
   - Acronyms: acronyms.md
