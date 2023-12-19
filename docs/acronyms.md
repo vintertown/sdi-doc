@@ -21,3 +21,4 @@
 - DIT = Directory Information Tree
 - HMAC = Hash Message Authentication Code
 - TTL = Time To Live
+- LDIF = LDAP Data Interchange Format

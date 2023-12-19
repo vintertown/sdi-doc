@@ -19,4 +19,5 @@ nav:
       - 'Filter based search': 'ldap/filter-based-search.md'
       - 'Accessing LDAP data by using a mail client': 'ldap/mail-client.md'
       - 'LDAP Config': 'ldap/config.md'
+      - 'LDAP based user login': 'ldap/user-login.md'
   - Acronyms: acronyms.md
