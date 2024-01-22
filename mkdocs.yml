@@ -20,4 +20,9 @@ nav:
       - 'Accessing LDAP data by using a mail client': 'ldap/mail-client.md'
       - 'LDAP Config': 'ldap/config.md'
       - 'LDAP based user login': 'ldap/user-login.md'
+      - 'LDAP Backup and recovery / restore': 'ldap/backup-recovery-restore.md'
+      - 'Accessing LDAP by a Java™ application': 'ldap/accessing-with-java.md'
+  - Apache:
+      - 'General': 'apache/general.md'
+      - 'First Steps': 'apache/first-steps.md'
   - Acronyms: acronyms.md

@@ -22,3 +22,4 @@
 - HMAC = Hash Message Authentication Code
 - TTL = Time To Live
 - LDIF = LDAP Data Interchange Format
+- PAM = Pluggable Authentication Modules
