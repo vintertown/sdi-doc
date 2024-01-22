@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>Populating your DIT - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
@@ -83,7 +83,7 @@
 </li>
                                     
 <li>
-    <a href="../populating/" class="dropdown-item">Populating your DIT</a>
+    <a href="./" class="dropdown-item active">Populating your DIT</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../set-up/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../testing-bind-operation/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,17 +171,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#populating-your-dit" class="nav-link">Populating your DIT</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+            <li class="nav-item" data-level="2"><a href="#exporting-the-ldap-tree" class="nav-link">Exporting the ldap tree</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -192,14 +184,87 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="populating-your-dit">Populating your DIT</h1>
+<p>We can use Apache Directory Studio to populate our <a href="/acronyms">DIT</a>. We can create a new entry by right clicking on <code>dc=betrayer,dc=com</code>. Then choose <code>New Entry</code>. In the first step you can choose <code>Create entry from scratch</code>. For the available object classes please choose <code>organizationalUnit</code>. The object class <code>top</code> should have been generated automatically. The third step is to configure a distinguished name. As a parent choose your upper layer (for example for ou=departments, the upper layer is dc=betrayer,dc=com). Then you can complete these steps by clicking <code>finish</code>.</p>
+<p>After successfully setting up all organizational units we can implement <code>inetOrgPerson</code>.</p>
+<h2 id="exporting-the-ldap-tree">Exporting the ldap tree</h2>
+<p>We can create a dumb of the ldap tree by using the following command:</p>
+<pre><code class="language-ssh">/etc/ldap# ldapsearch -x -H ldap://vm1.g8.sdi.mi.hdm-stuttgart.de -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; -s sub &gt; ldap_export.ldif
+</code></pre>
+<p>The dumb should look like:</p>
+<pre><code class="language-ssh">LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# betrayer.com
+dn: dc=betrayer,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: betrayer.com
+dc: betrayer
+
+# departments, betrayer.com
+dn: ou=departments,dc=betrayer,dc=com
+ou: departments
+objectClass: organizationalUnit
+objectClass: top
+
+# software, departments, betrayer.com
+dn: ou=software,ou=departments,dc=betrayer,dc=com
+ou: software
+objectClass: organizationalUnit
+objectClass: top
+
+# devel, software, departments, betrayer.com
+dn: ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+ou: devel
+objectClass: organizationalUnit
+objectClass: top
+
+# testing, software, departments, betrayer.com
+dn: ou=testing,ou=software,ou=departments,dc=betrayer,dc=com
+ou: testing
+objectClass: organizationalUnit
+objectClass: top
+
+# financial, departments, betrayer.com
+dn: ou=financial,ou=departments,dc=betrayer,dc=com
+ou: financial
+objectClass: organizationalUnit
+objectClass: top
+
+# jsmith, devel, software, departments, betrayer.com
+dn: uid=jsmith,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: jsmith
+sn: Smith
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: John Smith
+mail: john@smith.com
+
+# abean, devel, software, departments, betrayer.com
+dn: uid=abean,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: abean
+cn: Albert Bean
+sn: Bean
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+mail: albert@bean.com
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 9
+# numEntries: 8
+</code></pre></div>
             </div>
         </div>
 

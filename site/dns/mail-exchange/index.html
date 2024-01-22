@@ -62,7 +62,7 @@
 </li>
                                     
 <li>
-    <a href="../further-exercises/" class="dropdown-item">Further Excercises</a>
+    <a href="../transfer-dns-configurations/" class="dropdown-item">Transfer DNS configurations</a>
 </li>
                                 </ul>
                             </li>
@@ -72,6 +72,63 @@
                                     
 <li>
     <a href="../../ldap/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/browsing/" class="dropdown-item">Browsing LDAP</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/set-up/" class="dropdown-item">Installing and configuring OpenLDAP</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/populating/" class="dropdown-item">Populating your DIT</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/testing-bind-operation/" class="dropdown-item">Testing a bind operation as non-admin user</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/extending-an-existing-entry/" class="dropdown-item">Extending an existing entry</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/filter-based-search/" class="dropdown-item">Filter based search</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/mail-client/" class="dropdown-item">Accessing LDAP data by using a mail client</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/config/" class="dropdown-item">LDAP Config</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/user-login/" class="dropdown-item">LDAP based user login</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/backup-recovery-restore/" class="dropdown-item">LDAP Backup and recovery / restore</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/accessing-with-java/" class="dropdown-item">Accessing LDAP by a Java™ application</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../apache/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../apache/first-steps/" class="dropdown-item">First Steps</a>
 </li>
                                 </ul>
                             </li>
@@ -92,7 +149,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../further-exercises/" class="nav-link">
+                                <a rel="next" href="../transfer-dns-configurations/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -120,7 +177,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+            <li class="nav-item" data-level="2"><a href="#how-to-setup-a-mx-record" class="nav-link">How to setup a MX Record</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -137,39 +194,28 @@
 
 <h1 id="mail-exchange">Mail Exchange</h1>
 <h2 id="what-is-mail-exchange-mx-record">What is Mail Exchange (MX Record)?</h2>
-<p>A Mail Exchange (MX) record is a type of DNS (Domain Name System) record that specifies the mail servers responsible for receiving email on behalf of a domain.</p>
-<h2 id="example">Example</h2>
-<p>Provide a mail exchange record pointing to mx1.hdm-stuttgart.de. Test this configuration using dig accordingly.</p>
-<p>Caveat: Configuring a client machine using your name server and sending a mail to xy123@g7.sdi.mi.hdm-stuttgart.de won't actually work since mail.hdm-stuttgart.de will reject mails being sent to any domain other than certain subdomain of hdm-stuttgart.de.</p>
+<p>A Mail Exchange (<a href="/acronyms">MX</a>) record is a type of <a href="/acronyms">DNS</a> record that specifies the mail servers responsible for receiving email on behalf of a domain. The <a href="/acronyms">MX</a> record specifies how email messages should be forwarded in accordance with the Simple Mail Transfer Protocol (<a href="/acronyms">SMTP</a>, the standard protocol for all email). Like CNAME records, an MX record must always point to another domain.</p>
+<h2 id="how-to-setup-a-mx-record">How to setup a MX Record</h2>
+<p>In order to configure our <a href="/acronyms">MX</a> record that it points towards mx1.hdm-stuttgart.de, we can add the following parameters to the db.g8.sdi.mi.hdm-stuttgart.de (/etc/bind/Zones/db.g8.sdi.mi.hdm-stuttgart.de) file.</p>
+<pre><code class="language-ssh">nano /etc/bind/Zones/db.g8.sdi.mi.hdm-stuttgart.de
+</code></pre>
+<p>and add the following parameters:</p>
 <pre><code class="language-ssh">...
 
 ; MX Record
-@       IN    MX    10 mx1.hdm-stuttgart.de.
+g8.sdi.mi.hdm-stuttgart.de.   IN   MX   10 mx1.hdm-stuttgart.de.
 </code></pre>
-<p>Test configurations with</p>
-<pre><code class="language-ssh">dig vm1.g8.sdi.mi.hdm-stuttgart.de
+<p>The "priority" numbers in front of the domains for these <a href="/acronyms">MX</a> records indicate the preference; the lower "priority" value is preferred. The server always tries mailhost1 first, as 10 is lower than 20. If sending a message fails, the server chooses mailhost2 by default.</p>
+<p>Test whether the set record points towards the mx1.hdm-stuttgart.de mail server with:</p>
+<pre><code class="language-ssh">dig @141.62.75.108 g8.sdi.mi.hdm-stuttgart.de MX +short
 </code></pre>
 <p>Answer</p>
-<pre><code class="language-ssh">; &lt;&lt;&gt;&gt; DiG 9.18.19-1~deb12u1-Debian &lt;&lt;&gt;&gt; vm1.g8.sdi.mi.hdm-stuttgart.de MX
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NXDOMAIN, id: 16537
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;vm1.g8.sdi.mi.hdm-stuttgart.de.    IN  MX
-
-;; AUTHORITY SECTION:
-g8.sdi.mi.hdm-stuttgart.de. 10265 IN    SOA nssdi.mi.hdm-stuttgart.de. goik.hdm-stuttgart.de. 2022110842 14400 7200 1209600 43200
-
-;; Query time: 0 msec
-;; SERVER: 141.62.64.21#53(141.62.64.21) (UDP)
-;; WHEN: Mon Nov 27 17:06:28 CET 2023
-;; MSG SIZE  rcvd: 106
+<pre><code class="language-ssh">10 mx1.hdm-stuttgart.de.
 </code></pre>
-<h2 id="references">References</h2></div>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.cloudflare.com/de-de/learning/dns/dns-records/dns-mx-record/">www.cloudflare.com/de-de/learning/dns/dns-records/dns-mx-record/</a></li>
+</ol></div>
             </div>
         </div>
 

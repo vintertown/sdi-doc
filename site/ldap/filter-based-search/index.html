@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>Filter based search - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
@@ -95,7 +95,7 @@
 </li>
                                     
 <li>
-    <a href="../filter-based-search/" class="dropdown-item">Filter based search</a>
+    <a href="./" class="dropdown-item active">Filter based search</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../extending-an-existing-entry/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../mail-client/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,17 +171,29 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#filter-based-search" class="nav-link">Filter based search</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
+            <li class="nav-item" data-level="2"><a href="#all-users-with-a-uid-attribute-value-starting-with-the-letter-b" class="nav-link">All users with a uid attribute value starting with the letter “b”</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+            <li class="nav-item" data-level="2"><a href="#all-entries-with-either-a-defined-uid-attribute-or-a-ou-attribute-starting-with-letter-d" class="nav-link">All entries with either a defined uid attribute or a ou attribute starting with letter “d”</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#all-users-entries-within-the-whole-dit-having-a-gidnumber-value-of-100" class="nav-link">All users entries within the whole DIT having a gidNumber value of 100</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#all-user-entries-belonging-to-the-billing-department-having-a-uidnumber-value-greater-than-1023" class="nav-link">All user entries belonging to the billing department having a uidNumber value greater than 1023</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#all-user-entries-within-the-whole-dit-having-a-commonname-containing-the-substring-ei" class="nav-link">All user entries within the whole DIT having a commonName containing the substring “ei”</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#all-user-entries-within-the-whole-dit-belonging-to-gidnumber-100-or-having-a-uid-value-starting-with-letter-t" class="nav-link">All user entries within the whole DIT belonging to gidNumber == 100 or having a uid value starting with letter “t”</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -192,14 +204,262 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="filter-based-search">Filter based search</h1>
+<p>We use ldapsearch to perform search operations on LDAP.</p>
+<h2 id="all-users-with-a-uid-attribute-value-starting-with-the-letter-b">All users with a uid attribute value starting with the letter “b”</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=example,dc=com&quot; &quot;(uid=b*)&quot;
+</code></pre>
+<p>returns this answer:</p>
+<pre><code class="language-ssh">Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=example,dc=com&gt; with scope subtree
+# filter: (uid=b*)
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 32 No such object
+
+# numResponses: 1
+root@sdi08a:~# ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(uid=b*)&quot;
+Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (uid=b*)
+# requesting: ALL
+#
+
+# bein, devel, software, departments, betrayer.com
+dn: uid=bein,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: bbein
+uid: bein
+cn: Bernd Bein
+sn: Bein
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1
+</code></pre>
+<h2 id="all-entries-with-either-a-defined-uid-attribute-or-a-ou-attribute-starting-with-letter-d">All entries with either a defined uid attribute or a ou attribute starting with letter “d”</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(|(uid=*)(ou=d*))&quot;
+</code></pre>
+<pre><code class="language-ssh"># extended LDIF
+#
+# LDAPv3
+# base &lt;dc=example,dc=com&gt; with scope subtree
+# filter: (uid=b*)
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 32 No such object
+
+# numResponses: 1
+root@sdi08a:~# ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(uid=b*)&quot;
+Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (uid=b*)
+# requesting: ALL
+#
+
+# bein, devel, software, departments, betrayer.com
+dn: uid=bein,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: bbein
+uid: bein
+cn: Bernd Bein
+sn: Bein
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1
+root@sdi08a:~# ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(|(uid=*)(ou=d*))&quot;
+Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (|(uid=*)(ou=d*))
+# requesting: ALL
+#
+
+# departments, betrayer.com
+dn: ou=departments,dc=betrayer,dc=com
+ou: departments
+objectClass: organizationalUnit
+objectClass: top
+
+# devel, software, departments, betrayer.com
+dn: ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+ou: devel
+objectClass: organizationalUnit
+objectClass: top
+
+# jsmith, devel, software, departments, betrayer.com
+dn: uid=jsmith,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: posixAccount
+mail: john@smith.com
+sn: Smithy
+cn: John Smithy
+uid: jsmith
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/jsmith
+
+# abean, devel, software, departments, betrayer.com
+dn: uid=abean,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: abean
+cn: Albert Bean
+sn: Bean
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: posixAccount
+mail: albert@bean.com
+userPassword:: e1NNRDV9aHVZTzQwUSthNDFuY2JlbS90NWlxNUFMYU1Iaml3aTU=
+uidNumber: 1
+gidNumber: 1
+homeDirectory: /home/abean
+
+# bein, devel, software, departments, betrayer.com
+dn: uid=bein,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: bbein
+uid: bein
+cn: Bernd Bein
+sn: Bein
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 6
+# numEntries: 5
+</code></pre>
+<h2 id="all-users-entries-within-the-whole-dit-having-a-gidnumber-value-of-100">All users entries within the whole DIT having a gidNumber value of 100</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(gidNumber=100)&quot;
+</code></pre>
+<p>Our gid numbers start at 1000 so this should not return anything.</p>
+<pre><code class="language-ssh">Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (gidNumber=100)
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 1
+</code></pre>
+<h2 id="all-user-entries-belonging-to-the-billing-department-having-a-uidnumber-value-greater-than-1023">All user entries belonging to the billing department having a uidNumber value greater than 1023</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;ou=billing,dc=betrayer,dc=com&quot; &quot;(uidNumber&gt;=1023)&quot;
+</code></pre>
+<p>We do not have a department <code>billing</code> so this search query cannot be resolved.
+Answer:</p>
+<pre><code class="language-ssh">Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;ou=billing,dc=betrayer,dc=com&gt; with scope subtree
+# filter: (uidNumber&gt;=1023)
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 32 No such object
+matchedDN: dc=betrayer,dc=com
+
+# numResponses: 1
+</code></pre>
+<h2 id="all-user-entries-within-the-whole-dit-having-a-commonname-containing-the-substring-ei">All user entries within the whole DIT having a commonName containing the substring “ei”</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(cn=*ei*)&quot;
+</code></pre>
+<p>Answer:</p>
+<pre><code class="language-ssh">Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (cn=*ei*)
+# requesting: ALL
+#
+
+# bein, devel, software, departments, betrayer.com
+dn: uid=bein,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+uid: bbein
+uid: bein
+cn: Bernd Bein
+sn: Bein
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: posixAccount
+gidNumber: 1024
+homeDirectory: /home/bbein
+uidNumber: 1024
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1
+</code></pre>
+<h2 id="all-user-entries-within-the-whole-dit-belonging-to-gidnumber-100-or-having-a-uid-value-starting-with-letter-t">All user entries within the whole DIT belonging to gidNumber == 100 or having a uid value starting with letter “t”</h2>
+<pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(|(gidNumber=100)(uid=t*))&quot;
+</code></pre>
+<p>Answer:</p>
+<pre><code class="language-ssh">Enter LDAP Password:
+# extended LDIF
+#
+# LDAPv3
+# base &lt;dc=betrayer,dc=com&gt; with scope subtree
+# filter: (|(gidNumber=100)(uid=t*))
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 1
+</code></pre></div>
             </div>
         </div>
 

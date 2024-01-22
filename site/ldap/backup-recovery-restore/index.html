@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>LDAP Backup and recovery / restore - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
@@ -111,7 +111,7 @@
 </li>
                                     
 <li>
-    <a href="../backup-recovery-restore/" class="dropdown-item">LDAP Backup and recovery / restore</a>
+    <a href="./" class="dropdown-item active">LDAP Backup and recovery / restore</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../user-login/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../accessing-with-java/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,20 +171,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#backup-and-recovery-restore" class="nav-link">Backup and recovery / restore</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -192,14 +180,97 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="backup-and-recovery-restore">Backup and recovery / restore</h1>
+<p>For setting up LDAP on your second machine you can use the instructions listed in our <a href="/ldap/set-up/">LDAP Installation Manual</a>.
+To export the data from your <code>a machine</code> to your <code>b machine</code> you can use Apache Directory Studio. We have registered with the following DN on the a machine <code>dc=betrayer,dc=com</code>. By right-clicking on the DN root, we can generate an <code>ldif</code> file under export. We save it locally on
+our machine and upload it to the <code>b machine</code> via scp.</p>
+<p>The uploaded file maybe looks something like this.
+It is important to delete the head in order to successfully reconfigure it with <code>slapadd -l /data.ldif</code>. (<code>data.ldif</code> is the exported file) When installing <code>ldap</code> beforehand we have already configured our root tree with <code>dc=betrayer,dc=com</code>. That is the reason we need to delete the head.</p>
+<p>This should be removed</p>
+<pre><code class="language-ssh">dn: dc=betrayer,dc=com
+objectClass: dcObject
+objectClass: organization
+objectClass: top
+dc: betrayer
+o: betrayer.com
+</code></pre>
+<p>We can restore the exported data with <code>slapadd -l /data.ldif</code>
+This is the file we uploaded</p>
+<pre><code class="language-ssh">dn: dc=betrayer,dc=com
+objectClass: dcObject
+objectClass: organization
+objectClass: top
+dc: betrayer
+o: betrayer.com
+
+dn: ou=departments,dc=betrayer,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: departments
+
+dn: ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: software
+
+dn: ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: devel
+
+dn: ou=testing,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: testing
+
+dn: ou=financial,ou=departments,dc=betrayer,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: financial
+
+dn: uid=jsmith,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: posixAccount
+objectClass: top
+cn: John Smithy
+gidNumber: 100
+homeDirectory: /home/jsmith
+sn: Smithy
+uid: jsmith
+uidNumber: 1002
+mail: john@smith.com
+
+dn: uid=abean,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: posixAccount
+objectClass: top
+cn: Albert Bean
+gidNumber: 100
+homeDirectory: /home/abean
+sn: Bean
+uid: abean
+uidNumber: 1000
+mail: albert@bean.com
+
+dn: uid=bein,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: posixAccount
+objectClass: top
+cn: Bernd Bein
+gidNumber: 100
+homeDirectory: /home/bbein
+sn: Bein
+uid: bbein
+uid: bein
+uidNumber: 1001
+</code></pre>
+<p>Now when logging in with Apache Directory Studio on our <code>b machine</code>, we can see the same directories we have on our <code>a machine</code>.</p></div>
             </div>
         </div>
 

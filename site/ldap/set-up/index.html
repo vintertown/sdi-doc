@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>Installing and configuring OpenLDAP - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
@@ -79,7 +79,7 @@
 </li>
                                     
 <li>
-    <a href="../set-up/" class="dropdown-item">Installing and configuring OpenLDAP</a>
+    <a href="./" class="dropdown-item active">Installing and configuring OpenLDAP</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../browsing/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../populating/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,17 +171,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#set-up-an-openldap-server" class="nav-link">Set up an OpenLdap server</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+            <li class="nav-item" data-level="2"><a href="#how-to-setup-and-configure-an-openldap-server" class="nav-link">How to setup and configure an OpenLdap server</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -192,14 +184,40 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
+<h1 id="set-up-an-openldap-server">Set up an OpenLdap server</h1>
+<h2 id="how-to-setup-and-configure-an-openldap-server">How to setup and configure an OpenLdap server</h2>
+<p>First step in installing and setting up an OpenLdap server is to install <a href="/acronyms">slapd</a> with the command:</p>
+<pre><code class="language-ssh">apt install slapd ldap-utils
+</code></pre>
+<p>We need to reconfigure <a href="/acronyms">DIT</a></p>
+<pre><code class="language-ssh">dpkg-reconfigure slapd
+</code></pre>
 <ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<li>First option: We need a start configuration for the database. Therefore we click on <code>No</code>.</li>
+<li>Second option: The DNS domain name is used to generate the base DN of your LDAP directory. We use <code>betrayer.com</code>, so our base DN will be <code>dc=betrayer, dc=com</code> We set the name of our organization to <code>betrayer.com</code>.</li>
+<li>Third option: Now we can choose a password for the administrator LDAP-directory.</li>
+<li>Forth option: We want to store the database when it's deleted so we choose <code>yes</code>.</li>
+<li>Fifth option: We also move the old database with <code>yes</code>.</li>
+</ol>
+<p>As a result we get:</p>
+<pre><code class="language-ssh">Backing up /etc/ldap/slapd.d in /var/backups/slapd-2.5.13+dfsg-5... done.
+  Moving old database directory to /var/backups:
+  - directory unknown... done.
+  Creating initial configuration... done.
+  Creating LDAP directory... done.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Omitting slapd configuration as requested.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Omitting slapd configuration as requested.
+root@sdi08a:~# dpkg-reconfigure slapd
+  Backing up /etc/ldap/slapd.d in /var/backups/slapd-2.5.13+dfsg-5... done.
+  Moving old database directory to /var/backups:
+  - directory unknown... done.
+  Creating initial configuration... done.
+  Creating LDAP directory... done.
+</code></pre>
+<p>The LDAP server is configured. We tested the connection using Apache Directory Studio. As a host name we used vm1.g8.sdi.mi.hdm-stuttgart.de. We do not use an encryption method because we do not have a valid certificate.</p>
+<p>For authentication we use simple authentication. The string <code>dc=betrayer,dc=com</code> is the "domain" for the <a href="/acronyms">LDAP</a> tree. Since we have registered the admin with the password in the <code>slapd config</code> we can use <code>cn=admin</code> to authenticate.</p></div>
             </div>
         </div>
 
