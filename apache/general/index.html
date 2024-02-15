@@ -66,8 +66,61 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">LDAP <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../ldap/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/browsing/" class="dropdown-item">Browsing LDAP</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/set-up/" class="dropdown-item">Installing and configuring OpenLDAP</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/populating/" class="dropdown-item">Populating your DIT</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/testing-bind-operation/" class="dropdown-item">Testing a bind operation as non-admin user</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/extending-an-existing-entry/" class="dropdown-item">Extending an existing entry</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/filter-based-search/" class="dropdown-item">Filter based search</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/mail-client/" class="dropdown-item">Accessing LDAP data by using a mail client</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/config/" class="dropdown-item">LDAP Config</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/user-login/" class="dropdown-item">LDAP based user login</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/backup-recovery-restore/" class="dropdown-item">LDAP Backup and recovery / restore</a>
+</li>
+                                    
+<li>
+    <a href="../../ldap/accessing-with-java/" class="dropdown-item">Accessing LDAP by a Java™ application</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -75,60 +128,7 @@
 </li>
                                     
 <li>
-    <a href="../browsing/" class="dropdown-item">Browsing LDAP</a>
-</li>
-                                    
-<li>
-    <a href="../set-up/" class="dropdown-item">Installing and configuring OpenLDAP</a>
-</li>
-                                    
-<li>
-    <a href="../populating/" class="dropdown-item">Populating your DIT</a>
-</li>
-                                    
-<li>
-    <a href="../testing-bind-operation/" class="dropdown-item">Testing a bind operation as non-admin user</a>
-</li>
-                                    
-<li>
-    <a href="../extending-an-existing-entry/" class="dropdown-item">Extending an existing entry</a>
-</li>
-                                    
-<li>
-    <a href="../filter-based-search/" class="dropdown-item">Filter based search</a>
-</li>
-                                    
-<li>
-    <a href="../mail-client/" class="dropdown-item">Accessing LDAP data by using a mail client</a>
-</li>
-                                    
-<li>
-    <a href="../config/" class="dropdown-item">LDAP Config</a>
-</li>
-                                    
-<li>
-    <a href="../user-login/" class="dropdown-item">LDAP based user login</a>
-</li>
-                                    
-<li>
-    <a href="../backup-recovery-restore/" class="dropdown-item">LDAP Backup and recovery / restore</a>
-</li>
-                                    
-<li>
-    <a href="../accessing-with-java/" class="dropdown-item">Accessing LDAP by a Java™ application</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../apache/general/" class="dropdown-item">General</a>
-</li>
-                                    
-<li>
-    <a href="../../apache/first-steps/" class="dropdown-item">First Steps</a>
+    <a href="../first-steps/" class="dropdown-item">First Steps</a>
 </li>
                                 </ul>
                             </li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../../ldap/accessing-with-java/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../first-steps/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,17 +171,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#apache-web-server" class="nav-link">Apache Web Server</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+            <li class="nav-item" data-level="2"><a href="#what-is-an-apache-web-server" class="nav-link">What is an Apache Web Server?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -192,14 +184,8 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="apache-web-server">Apache Web Server</h1>
+<h2 id="what-is-an-apache-web-server">What is an Apache Web Server?</h2></div>
             </div>
         </div>
 

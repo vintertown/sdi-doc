@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>Browsing LDAP - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,11 +71,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
-    <a href="../browsing/" class="dropdown-item">Browsing LDAP</a>
+    <a href="./" class="dropdown-item active">Browsing LDAP</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../general/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../set-up/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,17 +171,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#browse-an-existing-ldap-server" class="nav-link">Browse an existing LDAP Server</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+            <li class="nav-item" data-level="2"><a href="#how-to-browse-an-existing-ldap-server" class="nav-link">How to browse an existing LDAP Server?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -192,14 +184,103 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="browse-an-existing-ldap-server">Browse an existing LDAP Server</h1>
+<p>To browse directories with LDAP we use <a href="https://directory.apache.org/studio/">Apache Directory Studio</a>.</p>
+<h2 id="how-to-browse-an-existing-ldap-server">How to browse an existing LDAP Server?</h2>
+<p>To configure a new connection we can open <code>LDAP</code> / <code>New LDAP Connection</code>. We use the LDAP hdm server ldap1.hdm-stuttgart.de and connect to it via TLS. We use the <code>No Authentication</code> Method to get a general view of the ldap server. Make sure, that we are using the MI VPN.</p>
+<p>Now we are seeing the LDAP DIT and can navigate through it to see the userlist. If we right click on userlist we can filter the children and look after our user (for Example (uid=nv023)). Now we are seeing the following information for the user. (see picture)</p>
+<p>To get an extended view of our user (for example to see the hash) We can right click on our connection and click on <code>`Properties</code>. Now we can use the <code>Simple Authentification</code> Method. We can get our DN credentials from or user on the top (see picture) and authenticate with the corresponding password. Now we can see further materials like the Matrikelnummer or the hashed password.</p>
+<p>To generate the same with ldapsearch you can use the following promt <code>ldapsearch -x -H ldap://ldap1.hdm-stuttgart.de -b "ou=userlist,dc=hdm-stuttgart,dc=de" -s sub "(uid=nv023)"</code></p>
+<p>Here is the output with the same information as with the gui:</p>
+<pre><code class="language-ssh"># extended LDIF
+#
+# LDAPv3
+# base &lt;ou=userlist,dc=hdm-stuttgart,dc=de&gt; with scope subtree
+# filter: (uid=nv023)
+# requesting: ALL
+#
+
+# nv023, userlist, hdm-stuttgart.de
+dn: uid=nv023,ou=userlist,dc=hdm-stuttgart,dc=de
+displayName: Vinterstad Niklas
+employeeType: student
+objectClass: hdmAccount
+objectClass: hdmStudent
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: eduPerson
+eduPersonAffiliation: member
+eduPersonAffiliation: student
+eduPersonAffiliation: library-walk-in
+uid: nv023
+mail: nv023@hdm-stuttgart.de
+uidNumber: 73699
+cn: Vinterstad Niklas
+loginShell: /bin/sh
+hdmCategory: 1
+gidNumber: 100
+givenName: Niklas
+homeDirectory: /home/stud/n/nv023
+sn: Vinterstad
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1
+</code></pre>
+<p>If you want to authenticate, here is the following promt:
+<code>ldapsearch -x -H ldap://ldap1.hdm-stuttgart.de -b "ou=userlist,dc=hdm-stuttgart,dc=de" -D "uid=nv023,ou=userlist,dc=hdm-stuttgart,dc=de" -W "(uid=nv023)"</code></p>
+<p>and the follwing output with more information is showing:</p>
+<pre><code class="language-ssh"># extended LDIF
+#
+# LDAPv3
+# base &lt;ou=userlist,dc=hdm-stuttgart,dc=de&gt; with scope subtree
+# filter: (uid=nv023)
+# requesting: ALL
+#
+
+# nv023, userlist, hdm-stuttgart.de
+dn: uid=nv023,ou=userlist,dc=hdm-stuttgart,dc=de
+businessCategory: 1
+employeeType: student
+postOfficeBox: 2G
+objectClass: hdmAccount
+objectClass: hdmStudent
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: eduPerson
+eduPersonAffiliation: member
+eduPersonAffiliation: student
+eduPersonAffiliation: library-walk-in
+uid: nv023
+mail: nv023@hdm-stuttgart.de
+uidNumber: 73699
+cn: Vinterstad Niklas
+loginShell: /bin/sh
+hdmCategory: 1
+gidNumber: 100
+employeeNumber: 45516
+givenName: Niklas
+homeDirectory: /home/stud/n/nv023
+sn: Vinterstad
+matrikelNr: 45516
+userPassword:: e1NTSEF9TVBSZzZQQTJGMUxUKzVrOFM5Y2RnRlVjbmtaUm1iVlh5UERoTkhYdEx
+ 3UHZ0dDEw
+shadowLastChange: 19272
+sambaNTPassword: EEB75997E36EFFC420B8BFC8EB8E6CF6
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1
+
+</code></pre></div>
             </div>
         </div>
 

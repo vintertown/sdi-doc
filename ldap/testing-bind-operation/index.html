@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>Testing a bind operation as non-admin user - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
@@ -87,7 +87,7 @@
 </li>
                                     
 <li>
-    <a href="../testing-bind-operation/" class="dropdown-item">Testing a bind operation as non-admin user</a>
+    <a href="./" class="dropdown-item active">Testing a bind operation as non-admin user</a>
 </li>
                                     
 <li>
@@ -144,12 +144,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../dns/transfer-dns-configurations/" class="nav-link">
+                                <a rel="prev" href="../populating/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../browsing/" class="nav-link">
+                                <a rel="next" href="../extending-an-existing-entry/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -171,20 +171,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ldap" class="nav-link">LDAP</a>
+            <li class="nav-item" data-level="1"><a href="#testing-a-bind-operation-as-non-admin-user" class="nav-link">Testing a bind operation as non-admin user</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-ldap" class="nav-link">What is LDAP?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-does-ldap-work" class="nav-link">How does LDAP work?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -192,14 +180,13 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ldap">LDAP</h1>
-<h2 id="what-is-ldap">What is LDAP?</h2>
-<p><a href="/acronyms">LDAP</a> is a standard method for accessing directory services. A directory service is a repository with resource information on multiple systems and services within a distributed environment.</p>
-<h2 id="how-does-ldap-work">How does LDAP work?</h2>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap">www.ibm.com/docs/de/db2/10.5?topic=servers-lightweight-directory-access-protocol-ldap</a></li>
-</ol></div>
+<h1 id="testing-a-bind-operation-as-non-admin-user">Testing a bind operation as non-admin user</h1>
+<p>First step is to set a password. We can achieve this by right clicking on the side uid e.g. <code>uid=abean</code>.
+You can select <code>New Attribute</code> on the top bar and choose as a attribute type <code>userPassword</code> from the selectable.
+Select a new password and a suitable hash method for encrypting the password. We used for example <code>SMD5</code>.
+Important: Some password hash types may not be supported. We used SHA beforehand and the configuration did not work.
+To configure a second connection click on <code>LDAP</code> / <code>New Connection</code>.
+We name it for example <code>LDAP Server abean</code>. Use the correct password and the correct binding parameters. For our user <code>uid=abean</code> we had to use: <code>uid=abean,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com</code></p></div>
             </div>
         </div>
 
