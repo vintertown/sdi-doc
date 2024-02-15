@@ -25,4 +25,5 @@ nav:
   - Apache:
       - 'General': 'apache/general.md'
       - 'First Steps': 'apache/first-steps.md'
+      - 'Virtual Hosts': 'apache/virtual-hosts.md'
   - Acronyms: acronyms.md
