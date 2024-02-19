@@ -36,7 +36,7 @@ mykey.g8.               0       ANY     TSIG    hmac-sha256. 1702656342 300 32 1
 
 ## Creating an A record
 
-To associate the domain name `v1.g8.sdi.mi.hdm-stuttgart.de` with our IP address of our server we have to set an A record on the dedicated name server, like:
+To associate the domain name `vm1.g8.sdi.mi.hdm-stuttgart.de` with our IP address of our server we have to set an A record on the dedicated name server, like:
 
 ```ssh
 export HMAC=hmac-sha256:mykey.g8:Kk7bhUqdJNARTr4xpeNVxETuFcxRXKF7vqpZQ8yIE8k=
