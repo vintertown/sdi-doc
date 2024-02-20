@@ -28,4 +28,6 @@ nav:
       - 'Virtual Hosts': 'apache/virtual-hosts.md'
       - 'SSL/TSL Support': 'apache/ssl-tsl-support.md'
       - 'LDAP authentication': 'apache/ldap-authentication.md'
+      - 'MySQL Database': 'apache/mysql-database.md'
+      - 'Web Based User Management': 'apache/web-based-user-management.md'
   - Acronyms: acronyms.md
