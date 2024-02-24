@@ -130,6 +130,39 @@
 <li>
     <a href="./" class="dropdown-item active">First Steps</a>
 </li>
+                                    
+<li>
+    <a href="../virtual-hosts/" class="dropdown-item">Virtual Hosts</a>
+</li>
+                                    
+<li>
+    <a href="../ssl-tsl-support/" class="dropdown-item">SSL/TSL Support</a>
+</li>
+                                    
+<li>
+    <a href="../ldap-authentication/" class="dropdown-item">LDAP authentication</a>
+</li>
+                                    
+<li>
+    <a href="../mysql-database/" class="dropdown-item">MySQL Database</a>
+</li>
+                                    
+<li>
+    <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">File Cloud <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../file-cloud/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../file-cloud/set-up/" class="dropdown-item">Set Up</a>
+</li>
                                 </ul>
                             </li>
                             <li class="navitem">
@@ -149,7 +182,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../acronyms/" class="nav-link">
+                                <a rel="next" href="../virtual-hosts/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -173,6 +206,26 @@
             
             <li class="nav-item" data-level="1"><a href="#first-steps" class="nav-link">First Steps</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#installing-apache" class="nav-link">Installing Apache</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-the-default-apache-frontend" class="nav-link">Using the default Apache frontend</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hosting-own-content" class="nav-link">Hosting own content</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#installing-the-apache2-documentation" class="nav-link">Installing the Apache2 documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#uploading-our-own-documentation" class="nav-link">Uploading our own documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -181,10 +234,13 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="first-steps">First Steps</h1>
+<h2 id="installing-apache">Installing Apache</h2>
 <p>To install our server we need the latest version of Apache. We can install the version with the following command:</p>
 <p><code>aptitude install apache2</code></p>
-<p>Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our VM in the previous DNS task, we can call it globally and see the default page.</p>
-<p>We have moved the index.html file which was located in the path /var/www/html to the root folder. When reloading the web page again, a new default page appears. It shows the Apache and Linux version (fig.1).</p>
+<p>Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our VM in the previous <a href="/dns/transfer-dns-configurations">DNS task</a>, we can call it globally and see the default page.</p>
+<h2 id="using-the-default-apache-frontend">Using the default Apache frontend</h2>
+<p>We have moved the index.html file which was located in the path /var/www/html to the root folder. When reloading the web page again, a new default page appears. It shows the Apache and Linux version.</p>
+<h2 id="hosting-own-content">Hosting own content</h2>
 <p>We can now host our own index.html page with the following content:</p>
 <pre><code class="language-ssh">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -197,7 +253,12 @@
 &lt;/html&gt;
 </code></pre>
 <p>When moving it to the folder <code>/var/www/html</code> and reloading the browser, we can finally see our own website.</p>
-<p>To examine the output that you get with the <code>dpkg</code> command we can do the following:
+<h2 id="installing-the-apache2-documentation">Installing the Apache2 documentation</h2>
+<p>First we install the apache2 documentation with the following command</p>
+<pre><code class="language-ssh">apt install apache2-doc
+</code></pre>
+<p>But how can we access this documentation via our website?
+We use <code>dpkg</code> as the command for package management and use <code>-L</code> to examine all the files the package contains. Perhaps we can find a way to access the path here. To examine the output that you get with the <code>dpkg</code> command we can use the following:
 <code>dpkg -L apache2-doc &gt; files.txt</code></p>
 <p>This will save the output to a <code>files.txt</code>-file. This way we can examine the whole output. Without doing so, it would be not possible to see everything within your console.</p>
 <p>We get the following output:</p>
@@ -220,28 +281,30 @@ If the configuration is not already enabled, use the a2enconf command to enable 
 <pre><code class="language-ssh">a2enconf apache2-doc
 systemctl restart apache2
 </code></pre>
-<p>Now you should be able to access the manuals on <code>your-url.de/manual</code></p>
+<p>Now you should be able to access the manuals on <code>vm1.g8.mi.hdm-stuttgart.de/manual</code></p>
+<h2 id="uploading-our-own-documentation">Uploading our own documentation</h2>
 <p>In order to upload and access our sdi-docs with a browser client, we can use scp with the following command <code>scp -r site/ root@sdi08a.mi.hdm-stuttgart.de:/home/Sdidoc</code>.
-This uploads the docs to our machine. Now we can adjust the apache configuration with:</p>
-<ol>
-<li>The DocumentRoot should be named: <code>/home/Sdidoc/site</code></li>
-<li>Add the following lines to set permissions for apache to enter /home/...:
-   <code>ssh
-   &lt;Directory /home/sdidoc&gt;
-       Options Indexes FollowSymLinks
-       AllowOverride None
-       Require all granted
-   &lt;/Directory&gt;</code></li>
+This uploads the docs to our machine. Now we can adjust the apache configuration file <code>000-default.conf</code> (<code>/etc/apache2/sites-available/</code>) with:</p>
+<ul>
+<li>Add the following lines to set permissions for apache to enter <code>/home/...</code>:</li>
+</ul>
+<pre><code class="language-ssh">&lt;Directory /home/sdidoc&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+</code></pre>
+<ul>
 <li>
 <p>Furthermore we have to set the permissions on our server with the following commands:
-   <code>chown -R www-data:www-data /home/Sdidoc/site</code>
-   <code>chmod -R 755 /home/Sdidoc/site</code></p>
+  <code>chown -R www-data:www-data /home/Sdidoc/site</code>
+  <code>chmod -R 755 /home/Sdidoc/site</code></p>
 </li>
 <li>
 <p>Restart the apache server with: <code>systemctl restart apache2</code></p>
 </li>
 <li>Configure an Alias to be able to access the docs via <code>.../xy001</code>. In our case we added this line: <code>Alias /fw061 /home/Sdidoc/site</code></li>
-</ol>
+</ul>
 <p>Our apache config file looks like this in the end:</p>
 <pre><code class="language-ssh">&lt;VirtualHost *:80&gt;
         # The ServerName directive sets the request scheme, hostname and port that
