@@ -31,28 +31,16 @@ AUTHORS        console.php    dist        occ        package-lock.json  robots.t
 composer.json  COPYING        index.html  ocs        public.php         status.php
 ```
 
-In the next step, we create an apache configuration file for nextcloud. We navigate to `/etc/apache2/sites-available` and create a `nextcloud-conf` file. This is how the file should look. We add the Rewrite Rengine to route the request to /nextcloud
+In the next step, we create an apache configuration file for nextcloud. We can update the existing `fw061.conf` file (which we specified [here](/apache/virtual-hosts)) and create a new alias for the path /nextcloud, so that Nextcloud can be reached via <http://fw061.g8.sdi.mi.hdm-stuttgart.de/nextcloud>. We add this to the `fw061.conf` file.
 
 ```ssh
-<VirtualHost *:80>
-  ServerAdmin fw061@hdm-stuttgart.de
-  DocumentRoot /var/www/nextcloud
-  ServerName g8.sdi.mi.hdm-stuttgart.de
-  ServerAlias fw061.g8.sdi.mi.hdm-stuttgart.de
+ Alias /nextcloud /var/www/nextcloud
 
-  RewriteEngine On
-  RewriteRule ^/nextcloud/(.*)$ /$1 [R]
-
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-
-```
-
-Now we have to create a symbolic link to `sites-enabled`.
-
-```ssh
-ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
+  <Directory /var/www/nextcloud>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
 ```
 
 Then enable the following `apache2`modules, setup folder permissions and restart `apache2` and `mysql`.
@@ -100,5 +88,29 @@ And then install nextcloud and connect it to the database. Ensure that you are i
 
 ```ssh
 sudo -u www-data php occ maintenance:install --database "mysql" --database-name "nextcloud" --database-user "nextcloud" --database-pass "sdi" --admin-user "ncadmin" --admin-pass "sdi"
+```
+
+This should come as an output when it is installed correctly.
+
+```ssh
 Nextcloud was successfully installed
 ```
+
+The last step is to add the `fw061.g8.sdi.mi.hdm-stuttgart.de` to the trusted domain section. We do this by updating the `/var/www/nextcloud/config/config.php` file with our domain. The first section should now loo like this.
+
+```ssh
+ array (
+    0 => 'localhost',
+    1 => 'fw061.g8.sdi.mi.hdm-stuttgart.de',
+  ),
+```
+
+We restart Apache one more time with `systemctl restart apache2` and are now able to reach the Log-In Screen. We log in with the admin credentials and can now see the Nextcloud Hub.
+
+![Nextcloud Log-In Screen](/media/nextcloud-login.png)
+
+And the Nexcloud Dashboard.
+
+![Nextcloud Log-In Screen](/media/nextcloud-dashboard.png)
+
+## Access with LDAP HdM credentials
