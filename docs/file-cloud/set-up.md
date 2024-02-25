@@ -114,3 +114,21 @@ And the Nexcloud Dashboard.
 ![Nextcloud Log-In Screen](/media/nextcloud-dashboard.png)
 
 ## Access with LDAP HdM credentials
+
+We use this guide <https://docs.nextcloud.com/server/13/admin_manual/configuration_user/user_auth_ldap.html> to configure LDAP access. First we need to login as admin again. Then we need to enable the `LDAP user and group backend` on the Nextcloud app page. For this, click on the Icon on the right top corner and navigate to Apps. Now search for LDAP and you see the field `LDAP user and group backend`. Activate it.
+
+![Nextcloud LDAP](/media/nextcloud-ldap-activate.png)
+
+Now click on Personal Settings and navigate to `Administration\LDAP/AD integration`. Add the following parameters for the HdM integration on the first screen. The port and the base DN are automatically detected. You should see the green light with the Configuration OK at the bottom.
+
+![Nextcloud LDAP Setup](/media/nextcloud-ldap-1.png)
+
+The paramters for the next screen should also be automatically detected. You can verify the settings and count the users on the bottom.
+
+![Nextcloud LDAP Setup 2](/media/nextcloud-ldap-2.png)
+
+When you log in with the LDAP credentials it should work over the `LDAP\AD` username. We test this with the HdM username at the bottom.
+
+![Nextcloud LDAP Setup 3](/media/nextcloud-ldap-3.png)
+
+Now the Setup is complete and you can login over <http://fw061.g8.sdi.mi.hdm-stuttgart.de/nextcloud> with the HdM credentials.
