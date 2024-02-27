@@ -33,5 +33,8 @@ nav:
   - File Cloud:
       - 'General': 'file-cloud/general.md'
       - 'Set Up': 'file-cloud/set-up.md'
+  - Icinga:
+      - 'General': 'icinga/general.md'
+      - 'Set Up': 'icinga/set-up.md'
 
   - Acronyms: acronyms.md
