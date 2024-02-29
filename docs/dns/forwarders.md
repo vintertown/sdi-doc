@@ -2,7 +2,7 @@
 
 ## What are DNS forwarders?
 
-If you do not want to send [DNS](/acronyms) queries to the root server, you can configure [Bind](<(/acronyms)>) in forwarder mode. It then forwards queries to other [DNS](/acronyms) servers (e.g. from the [ISP](/acronyms)). A new forwarders block is created in the options block for this purpose.
+If you do not want to send [DNS](/acronyms) queries to the root server, you can configure [Bind](<(/acronyms)>) in forwarding mode. It then forwards queries to other [DNS](/acronyms) servers (e.g. from the [ISP](/acronyms)). A new forwarders block is created in the options block for this purpose.
 
 ## For Example
 
@@ -17,7 +17,7 @@ When the [DNS](/acronyms) server is not configured with a forwarder, it might be
 
 ## How to configure a forwarder?
 
-In order to configure our [DNS](/acronyms) forwarder we can add the following parameters to the named.config.options (/etc/bind/named.config.options) file.
+In order to configure our [DNS](/acronyms) forwarder we can add to the following parameters to the named.conf.options (/etc/bind/named.conf.options) file.
 
 ```ssh
 options {
@@ -38,7 +38,7 @@ forwarders {
 ...
 ```
 
-A list of IP addresses that the system is forwarding to. `8.8.8.8` is the Google server.
+A list of [IP](/acronyms) addresses that the system is forwarding to. `8.8.8.8` is the Google server.
 
 ```ssh
 ...
@@ -48,7 +48,7 @@ forwarders {
 ...
 ```
 
-Forward only means that all external queries by default are being forwarded.
+Forward only means that all external queries by default are forwarded.
 
 ```ssh
 service bind9 restart;

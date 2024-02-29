@@ -1,6 +1,6 @@
 # LDAP configuration
 
-Some parameters have to be added manually to the [LDAP](/acronyms) configuration file. OpenLdap supports parameter configuration within its own database backend.
+Some parameters have to be added manually to the [LDAP](/acronyms) configuration file. OpenLDAP supports parameter configuration within its own database backend.
 
 ## Configuration with Apache Directory Studio
 
@@ -23,7 +23,7 @@ olcRootDN: cn=admin,cn=config
 
 ```
 
-At the end of the of the answer we see our required cn=config database! To access the config database via ApacheDirectoryStudio, we need to set an `olcRootPW` attribute, the hashed password for the complete credentials. We do this by hashing our `SSHA` password. We can do this for example like this:
+At the end of the of the answer we see our required cn=config database. To access the config database via ApacheDirectoryStudio, we need to set an `olcRootPW` attribute, the hashed password for the complete credentials. We do this by hashing our `SSHA` password. We can do this for example like this:
 
 Generate Password Hash with salt.
 

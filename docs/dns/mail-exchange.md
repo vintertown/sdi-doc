@@ -21,7 +21,7 @@ and add the following parameters:
 g8.sdi.mi.hdm-stuttgart.de.   IN   MX   10 mx1.hdm-stuttgart.de.
 ```
 
-The "priority" numbers in front of the domains for these [MX](/acronyms) records indicate the preference; the lower "priority" value is preferred. The server always tries mailhost1 first, as 10 is lower than 20. If sending a message fails, the server chooses mailhost2 by default.
+The "priority" numbers in front of the domains for these [MX](/acronyms) records indicates the preference,with the lower "priority" value being preferred. The server always tries mailhost1 first, as 10 is lower than 20. If sending a message fails, the server chooses mailhost2 by default.
 
 Test whether the set record points towards the mx1.hdm-stuttgart.de mail server with:
 

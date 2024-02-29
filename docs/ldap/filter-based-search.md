@@ -1,6 +1,6 @@
 # Filter based search
 
-We use ldapsearch to perform search operations on LDAP.
+We use `ldapsearch` to perform search operations on [LDAP](/acronyms).
 
 ## All users with a uid attribute value starting with the letter “b”
 
@@ -59,7 +59,7 @@ result: 0 Success
 ```ssh
 ldapsearch -x -D "cn=admin,dc=betrayer,dc=com" -W -b "dc=betrayer,dc=com" "(|(uid=*)(ou=d*))"
 ```
-
+Answer:
 ```ssh
 # extended LDIF
 #
@@ -290,3 +290,6 @@ result: 0 Success
 
 # numResponses: 1
 ```
+
+## References
+1. [www.docs.oracle.com/cd/E19693-01/819-0997/auto45/index.html](https://docs.oracle.com/cd/E19693-01/819-0997/auto45/index.html)

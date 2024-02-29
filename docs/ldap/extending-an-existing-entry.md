@@ -1,7 +1,10 @@
 # Extending an existing entry
+As before, we use Apache Directory Studio for these steps.
 
+## Extend entry by objectclass posixAccount
 There are two ways to extend an existing entry. We'll extend our user jsmith with an posixAccount objectClass.
 One way would be to right click within the jsmith object and select `Add new value`. Then you can select the value you want to extend your entry with. In our case it would be `posixAccount`. After selecting the value we can click next and choose a proper value. We choose 1000.
+
 The other way would be to select `LDAP` in the toolbar and choose `New LDIF File`. You can paste this code to the `LDIF` file.
 
 ```ssh
@@ -30,3 +33,7 @@ add: objectClass
 objectClass: posixAccount
 ...
 ```
+
+## References 
+
+1. [www.digitalocean.com/community/tutorials/how-to-use-ldif-files-to-make-changes-to-an-openldap-system](https://www.digitalocean.com/community/tutorials/how-to-use-ldif-files-to-make-changes-to-an-openldap-system)

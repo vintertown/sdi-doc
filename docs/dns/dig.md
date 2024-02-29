@@ -2,13 +2,13 @@
 
 ## What is dig?
 
-[dig](/acronyms) is a programm/command that is mainly used to analyse and check [DNS](/acronyms) servers and query information from it. It has the following syntax:
+[dig](/acronyms) is a program/command that is mainly used to analyse and check [DNS](/acronyms) servers and query information from it. It has the following syntax:
 
 ```ssh
 dig [@Server] [Domain] [Type] [-x IP-Address]
 ```
 
-The server is not necessary, when you only want general [DNS](/acronyms) information for an address (see examples above).
+The server is not necessary when you only want general [DNS](/acronyms) information for an address (see examples above).
 
 ## Example
 
@@ -51,7 +51,7 @@ shades20.rzone.de.
 docks02.rzone.de.
 ```
 
-Reverse Lookup
+Reverse Lookup ([PTR](/acronyms))
 
 ```ssh
 root@sdi08b:~# dig -x 81.169.145.70 +short

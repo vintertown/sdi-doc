@@ -1,7 +1,6 @@
 # Accessing LDAP by a Java™ application
 
-We try to reach our LDAP server with a simple Java application.
-To install all needed packages we configure the following artefactId with the following dependencies:
+We attempt to connect to our [LDAP](/acronyms) server using a simple Java application. To install all necessary packages, we configure the following `artifactId` with the corresponding dependencies:
 
 ```ssh
   <parent>
@@ -75,3 +74,7 @@ homeDirectory: /home/bbein
 uidNumber: 1001
 gidNumber: 100
 ```
+
+## References
+
+1. [www.ldaptive.org/](https://www.ldaptive.org/)

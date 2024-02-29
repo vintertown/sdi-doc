@@ -2,24 +2,26 @@
 
 ## What is DNS?
 
-[DNS](/acronyms), or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical [IP](/acronyms) addresses. It is indispencible for accessing services on the internet. Only with the [DNS](/acronyms)
+[DNS](/acronyms), or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical [IP](/acronyms) addresses. It is indispensable for accessing services on the internet. Only with the [DNS](/acronyms)
 can an internet user access a website by entering a [URL](/acronyms) or send an email with a domain ending (e.g. @hdm-stuttgart.de).
 
 ## How does DNS work?
 
-[DNS](/acronyms) works through a hirahierarchical, distributed order.
+[DNS](/acronyms) works through a hierarchical, distributed order.
 
 1. A user enters an [URL](/acronyms) (e.g., www.beispieldomain.de) into a web browser.
 2. (When cache is not empty) The user's device checks its local [DNS](/acronyms) resolver (typically provided by the Internet Service Provider or configured manually). This resolver may have a cache of recently resolved domain names.
 3. When there is no cache available the root server is the first step in translating the given host names into [IP](/acronyms) addresses. It will point to the top-level domain of the given domain name.
 4. Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given [IP](/acronyms) address.
-5. The top-level domain server provides informations about the authoritative [DNS](/acronyms) server. The authoritative [DNS](/acronyms) server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the [IP](/acronyms) address associated with the specific host name.
+5. The top-level domain server provides information about the authoritative [DNS](/acronyms) server. The authoritative [DNS](/acronyms) server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the [IP](/acronyms) address associated with the specific host name.
 
 ![DNS Namensbaum](https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp)
+[Source denic.de](https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp)
+
 
 **Difference between DNS server and DNS resolver**
 
-A [DNS](/acronyms) resolver is a service that provides an [IP](/acronyms) address for a domain name on request. It is the counter part to [NS](/acronyms), which contain the actual [DNS](/acronyms) information
+A [DNS](/acronyms) resolver is a service that provides an [IP](/acronyms) address for a domain name on request. It is the counterpart to [NS](/acronyms), which contain the actual [DNS](/acronyms) information.
 
 **Good to know**
 

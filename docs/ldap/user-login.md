@@ -54,11 +54,11 @@ tar zxf /root/pam.tgz
 ```
 
 <span style='color: #ff468e'>Important:</span>
-Now it's time to open a second shell. In case of emergency this means that we accidentally log out of the server. In that case we unfortunately would not able to log in again.
+Now it's time to open a second shell. In case of emergency this means that we accidentally log out of the server. In that case we unfortunately would not be able to log in again.
 
 ## Configuration of the LDAP Client
 
-First we check whether the domain name is also resolved by our LDAP server. We can either ping the name directly to see if we get an answer or create an entry with the IP address under /etc/hosts.
+First we check whether the domain name is also resolved by our [LDAP](/acronyms) server. We can either ping the name directly to see if we get an answer or create an entry with the [IP](/acronyms) address under /etc/hosts.
 
 for example like this:
 

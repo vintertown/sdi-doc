@@ -1,8 +1,8 @@
 # Populating your DIT
 
-We can use Apache Directory Studio to populate our [DIT](/acronyms). We can create a new entry by right clicking on `dc=betrayer,dc=com`. Then choose `New Entry`. In the first step you can choose `Create entry from scratch`. For the available object classes please choose `organizationalUnit`. The object class `top` should have been generated automatically. The third step is to configure a distinguished name. As a parent choose your upper layer (for example for ou=departments, the upper layer is dc=betrayer,dc=com). Then you can complete these steps by clicking `finish`.
+We can use Apache Directory Studio to populate our [DIT](/acronyms). We can create a new entry by right clicking on `dc=betrayer,dc=com`. Then choose `New Entry`. In the first step you can choose `Create entry from scratch`. For the available object classes please choose `organizationalUnit`. The object class `top` should have been generated automatically. The third step is to configure a distinguished name. As a parent choose your upper layer (for example for ou=departments, the upper layer is dc=betrayer,dc=com). Then you can complete these steps by clicking `finish`. We use the same [DIT](/acronyms) as suggested in the [freedocs](https://freedocs.mi.hdm-stuttgart.de/ldapCompanyLdif.html).
 
-After successfully setting up all organizational units we can implement `inetOrgPerson`.
+After successfully setting up all organizational units we can implement `inetOrgPerson`. 
 
 ## Exporting the ldap tree
 
@@ -88,3 +88,7 @@ result: 0 Success
 # numResponses: 9
 # numEntries: 8
 ```
+
+## References
+
+1. [www.serverfault.com/questions/164519/how-to-copy-a-ldap-entry-and-all-the-subtree-on-a-linux-openldap-server](https://serverfault.com/questions/164519/how-to-copy-a-ldap-entry-and-all-the-subtree-on-a-linux-openldap-server)

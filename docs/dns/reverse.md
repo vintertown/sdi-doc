@@ -6,7 +6,7 @@ A reverse [DNS](/acronyms) lookup is a [DNS](/acronyms) query for the domain nam
 
 ## How to perform a reverse lookup?
 
-In order to perform a reverse lookup we have to configure the named.config.local (/etc/bind/named.config.local) file and add another zone to it with the following parameters:
+In order to perform a reverse lookup we have to configure the named.conf.local (/etc/bind/named.conf.local) file and add another zone to it with the following parameters:
 
 ```ssh
 zone "75.62.141.in-addr.arpa" {

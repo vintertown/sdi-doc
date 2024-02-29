@@ -49,7 +49,7 @@ Add the following lines to the named.conf.options file:
  allow-transfer { none; };
 ```
 
-Restart bind to confirm the set options:
+Restart [BIND](/acronyms) to confirm the set options:
 
 ```ssh
 systemctl restart bind9
@@ -92,7 +92,7 @@ www                 IN  CNAME   vm1
 cloud                  IN  CNAME   vm2
 ```
 
-To test the configuration, we can dig one of the the local machines with the ip of the nameserver
+To test the configuration, we can dig one of the local machines with the ip of the nameserver.
 
 ```ssh
 dig @141.62.75.108 vm2.g8.sdi.mi.hdm-stuttgart.de A +short
@@ -104,7 +104,7 @@ The following output is showing:
 141.62.75.122
 ```
 
-This is the IP adress of our second virtual machine. This displays the record is working.
+This is the IP address of our second virtual machine. This displays the record is working.
 
 ## References
 

@@ -1,13 +1,12 @@
 # Backup and recovery / restore
 
-For setting up LDAP on your second machine you can use the instructions listed in our [LDAP Installation Manual](/ldap/set-up/).
-To export the data from your `a machine` to your `b machine` you can use Apache Directory Studio. We have registered with the following DN on the a machine `dc=betrayer,dc=com`. By right-clicking on the DN root, we can generate an `ldif` file under export. We save it locally on
+To set up [LDAP](/acronyms) on your second machine, you can follow the instructions listed in our [LDAP Installation Manual](/ldap/set-up/).
+To export the data from your `a machine` to your `b machine` you can use Apache Directory Studio. We  registered with the following DN on the a machine `dc=betrayer,dc=com`. By right-clicking on the DN root, we can generate an `ldif` file under export. We save it locally on
 our machine and upload it to the `b machine` via scp.
 
-The uploaded file maybe looks something like this.
 It is important to delete the head in order to successfully reconfigure it with `slapadd -l /data.ldif`. (`data.ldif` is the exported file) When installing `ldap` beforehand we have already configured our root tree with `dc=betrayer,dc=com`. That is the reason we need to delete the head.
 
-This should be removed
+This should be removed:
 
 ```ssh
 dn: dc=betrayer,dc=com
@@ -18,8 +17,8 @@ dc: betrayer
 o: betrayer.com
 ```
 
-We can restore the exported data with `slapadd -l /data.ldif`
-This is the file we uploaded
+We can restore the exported data with `slapadd -l /data.ldif` on our b machine.
+This is the file we uploaded:
 
 ```ssh
 dn: dc=betrayer,dc=com

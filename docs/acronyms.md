@@ -25,3 +25,5 @@
 - PAM = Pluggable Authentication Modules
 - Icinga = Monitoring System
 - CPU = Central Processing Unit
+- TLS = Transport Layer Security
+- VPN = Virtual Private Network

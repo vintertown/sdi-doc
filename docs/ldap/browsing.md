@@ -1,16 +1,16 @@
 # Browse an existing LDAP Server
 
-To browse directories with LDAP we use [Apache Directory Studio](https://directory.apache.org/studio/).
+To browse directories with [LDAP](/acronyms) we use [Apache Directory Studio](https://directory.apache.org/studio/).
 
 ## How to browse an existing LDAP Server?
 
-To configure a new connection we can open `LDAP` / `New LDAP Connection`. We use the LDAP hdm server ldap1.hdm-stuttgart.de and connect to it via TLS. We use the `No Authentication` Method to get a general view of the ldap server. Make sure, that we are using the MI VPN.
+To configure a new connection we can open `LDAP` / `New LDAP Connection`. We use the [LDAP](/acronyms) HdM Server `ldap1.hdm-stuttgart.de` and connect to it via [TLS](/acronyms). We use the `No Authentication` Method to get a general view of the ldap server. Make sure, that we are using the "Medieninformatik/MI" [VPN](/acronyms).
 
-Now we are seeing the LDAP DIT and can navigate through it to see the userlist. If we right click on userlist we can filter the children and look after our user (for Example (uid=nv023)). Now we are seeing the following information for the user. (see picture)
+Now, we can view the [LDAP](/acronyms) DIT and navigate through it to see the user list. If we right click on user list we can filter the children and look after our user (for Example (uid=nv023)).
 
-To get an extended view of our user (for example to see the hash) We can right click on our connection and click on ``Properties`. Now we can use the `Simple Authentification` Method. We can get our DN credentials from or user on the top (see picture) and authenticate with the corresponding password. Now we can see further materials like the Matrikelnummer or the hashed password.
+To get an extended view of our user (for example to see the hash) We can right click on our connection and click on `Properties`. Now we can use the `Simple Authentification` Method. We can get our DN credentials from our user and authenticate with the corresponding password. Now we can see further materials like the "Matrikelnummer" or the hashed password.
 
-To generate the same with ldapsearch you can use the following promt `ldapsearch -x -H ldap://ldap1.hdm-stuttgart.de -b "ou=userlist,dc=hdm-stuttgart,dc=de" -s sub "(uid=nv023)"`
+To generate the same with ldapsearch you can use the following command prompt `ldapsearch -x -H ldap://ldap1.hdm-stuttgart.de -b "ou=userlist,dc=hdm-stuttgart,dc=de" -s sub "(uid=nv023)"`
 
 Here is the output with the same information as with the gui:
 
@@ -55,7 +55,7 @@ result: 0 Success
 # numEntries: 1
 ```
 
-If you want to authenticate, here is the following promt:
+If you want to authenticate, here is the following command prompt:
 `ldapsearch -x -H ldap://ldap1.hdm-stuttgart.de -b "ou=userlist,dc=hdm-stuttgart,dc=de" -D "uid=nv023,ou=userlist,dc=hdm-stuttgart,dc=de" -W "(uid=nv023)"`
 
 and the follwing output with more information is showing:
