@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>MySQL Database - Software defined Infrastructure</title>
+        <title>Set Up - Software defined Infrastructure</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -119,36 +119,36 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../general/" class="dropdown-item">General</a>
+    <a href="../../apache/general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
-    <a href="../first-steps/" class="dropdown-item">First Steps</a>
+    <a href="../../apache/first-steps/" class="dropdown-item">First Steps</a>
 </li>
                                     
 <li>
-    <a href="../virtual-hosts/" class="dropdown-item">Virtual Hosts</a>
+    <a href="../../apache/virtual-hosts/" class="dropdown-item">Virtual Hosts</a>
 </li>
                                     
 <li>
-    <a href="../ssl-tsl-support/" class="dropdown-item">SSL/TSL Support</a>
+    <a href="../../apache/ssl-tsl-support/" class="dropdown-item">SSL/TSL Support</a>
 </li>
                                     
 <li>
-    <a href="../ldap-authentication/" class="dropdown-item">LDAP authentication</a>
+    <a href="../../apache/ldap-authentication/" class="dropdown-item">LDAP authentication</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">MySQL Database</a>
+    <a href="../../apache/mysql-database/" class="dropdown-item">MySQL Database</a>
 </li>
                                     
 <li>
-    <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
+    <a href="../../apache/web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
                                 </ul>
                             </li>
@@ -165,28 +165,28 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Icinga <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../icinga/general/" class="dropdown-item">General</a>
+    <a href="../general/" class="dropdown-item">General</a>
 </li>
                                     
 <li>
-    <a href="../../icinga/set-up/" class="dropdown-item">Set Up</a>
+    <a href="./" class="dropdown-item active">Set Up</a>
 </li>
                                     
 <li>
-    <a href="../../icinga/functional-checks/" class="dropdown-item">Functional Checks</a>
+    <a href="../functional-checks/" class="dropdown-item">Functional Checks</a>
 </li>
                                     
 <li>
-    <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
+    <a href="../snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
 </li>
                                     
 <li>
-    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
+    <a href="../ssh-based-checks/" class="dropdown-item">SSH Checks</a>
 </li>
                                 </ul>
                             </li>
@@ -202,12 +202,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../ldap-authentication/" class="nav-link">
+                                <a rel="prev" href="../general/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../web-based-user-management/" class="nav-link">
+                                <a rel="next" href="../functional-checks/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -229,13 +229,37 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#mysqltm-database-administration" class="nav-link">MySQL™ database administration</a>
+            <li class="nav-item" data-level="1"><a href="#set-up" class="nav-link">Set Up</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#step-1-install-mysql" class="nav-link">Step 1: Install MySQL</a>
+            <li class="nav-item" data-level="2"><a href="#prerequesits" class="nav-link">Prerequesits</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-2-install-phpmyadmin" class="nav-link">Step 2: Install phpmyadmin</a>
+            <li class="nav-item" data-level="2"><a href="#installing-mariadb-server" class="nav-link">Installing MariaDB Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configuring-mariadb" class="nav-link">Configuring MariaDB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#install-icinga2-and-monitoring-plugins-on-the-master-server" class="nav-link">Install Icinga2 and Monitoring plugins on the Master Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#install-ido-mysql-driver-on-the-master-server" class="nav-link">Install IDO MySQL driver on the Master Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configure-icinga2-api" class="nav-link">Configure Icinga2 API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#prepare-web-setup" class="nav-link">Prepare Web Setup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setting-up-icingaweb" class="nav-link">Setting up IcingaWeb</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -246,41 +270,26 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="mysqltm-database-administration">MySQL™ database administration</h1>
-<h2 id="step-1-install-mysql">Step 1: Install MySQL</h2>
-<p>First we can install the default-mysql-server</p>
-<pre><code class="language-ssh">apt install mysql-server
+<h1 id="set-up">Set Up</h1>
+<h2 id="prerequesits">Prerequesits</h2>
+<p>We use these guides for installing Icinga on our server:</p>
+<ul>
+<li><a href="https://www.howtoforge.com/how-to-install-icinga-2-monitoring-software-on-debian-12/#prerequisites">www.howtoforge.com/how-to-install-icinga-2-monitoring-software-on-debian-12</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-icinga-and-icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-icinga-web-interface">www.digitalocean.com/community/tutorials/how-to-install-icinga-and-icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-icinga-web-interface</a></li>
+</ul>
+<p>Before starting we have to update apt:</p>
+<pre><code class="language-ssh"> apt update &amp;&amp; apt upgrade
 </code></pre>
-<p>and start the server</p>
-<pre><code class="language-ssh">systemctl start mysql
+<h2 id="installing-mariadb-server">Installing MariaDB Server</h2>
+<p>We want to use Icinga with MariaDB. We can install the mariadb-server with the following command:</p>
+<pre><code class="language-ssh">apt install mariadb-server
 </code></pre>
-<p>To see whether everything works correctly we can use</p>
-<pre><code class="language-ssh">systemctl status mysql
+<p>Afterwards we can install the secure script:</p>
+<pre><code class="language-ssh">mariadb-secure-installation
 </code></pre>
-<p>It provides us the following feedback</p>
-<pre><code class="language-ssh">● mariadb.service - MariaDB 10.11.6 database server
-     Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; preset: enabled)
-     Active: active (running) since Mon 2024-02-19 21:07:45 CET; 1min 9s ago
-       Docs: man:mariadbd(8)
-             https://mariadb.com/kb/en/library/systemd/
-   Main PID: 52008 (mariadbd)
-     Status: &quot;Taking your SQL requests now...&quot;
-      Tasks: 9 (limit: 618984)
-     Memory: 81.1M
-        CPU: 826ms
-     CGroup: /system.slice/mariadb.service
-             └─52008 /usr/sbin/mariadbd
-</code></pre>
-<p>When the installation successfully finishes it provides the following output:</p>
-<pre><code class="language-ssh">NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
-      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
-
-In order to log into MariaDB to secure it, we'll need the current
-password for the root user. If you've just installed MariaDB, and
-haven't set the root password yet, you should just press enter here.
-
-Enter current password for root (enter for none):
-OK, successfully used password, moving on...
+<p>We are being asked for a password. Since we do not have one configured yet we can press <code>enter</code>.
+The secure installation guide will ask you multiple questions to your configuration:</p>
+<pre><code class="language-ssh">OK, successfully used password, moving on...
 
 Setting the root password or using the unix_socket ensures that nobody
 can log into the MariaDB root user without the proper authorisation.
@@ -288,11 +297,13 @@ can log into the MariaDB root user without the proper authorisation.
 You already have your root account protected, so you can safely answer 'n'.
 
 Switch to unix_socket authentication [Y/n] n
+
  ... skipping.
 
 You already have your root account protected, so you can safely answer 'n'.
 
 Change the root password? [Y/n] n
+
  ... skipping.
 
 By default, a MariaDB installation has an anonymous user, allowing anyone
@@ -301,26 +312,29 @@ them.  This is intended only for testing, and to make the installation
 go a bit smoother.  You should remove them before moving into a
 production environment.
 
-Remove anonymous users? [Y/n] Y
+Remove anonymous users? [Y/n] y
  ... Success!
 
 Normally, root should only be allowed to connect from 'localhost'.  This
 ensures that someone cannot guess at the root password from the network.
 
-Disallow root login remotely? [Y/n] n
- ... skipping.
+Disallow root login remotely? [Y/n] y
+ ... Success!
 
 By default, MariaDB comes with a database named 'test' that anyone can
 access.  This is also intended only for testing, and should be removed
 before moving into a production environment.
 
-Remove test database and access to it? [Y/n] n
- ... skipping.
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
 
 Reloading the privilege tables will ensure that all changes made so far
 will take effect immediately.
 
-Reload privilege tables now? [Y/n] Y
+Reload privilege tables now? [Y/n] y
  ... Success!
 
 Cleaning up...
@@ -330,38 +344,142 @@ installation should now be secure.
 
 Thanks for using MariaDB!
 </code></pre>
-<h2 id="step-2-install-phpmyadmin">Step 2: Install phpmyadmin</h2>
-<p>Install phpmyadmin with the following command:</p>
-<pre><code class="language-ssh">apt install phpmyadmin
+<p>You can enter the MariaDB shell with:</p>
+<pre><code class="language-ssh">sudo mysql || sudo mariadb
 </code></pre>
-<p>Furthermore we have to use the following package in order to install php. We need php for phpmyadmin.</p>
-<pre><code class="language-ssh">apt install libapache2-mod-php
+<h2 id="configuring-mariadb">Configuring MariaDB</h2>
+<p>We can create a new table for Icinga with a User:</p>
+<pre><code class="language-ssh">sudo mysql
 </code></pre>
-<p>We encountered the issue that no config files were created under /etc/apache2/conf-enabled. We fixed the problem with manually creating the config files in /etc/apache2/conf-enabled/phpmyadmin.conf and /etc/apache2/conf-available/phpmyadmin.conf. Write the following code into your config files.</p>
-<pre><code class="language-ssh">Alias /phpmyadmin /usr/share/phpmyadmin
-&lt;Directory /usr/share/phpmyadmin&gt;
-    Options FollowSymLinks
-    DirectoryIndex index.php
-    Require all granted
-&lt;/directory&gt;
+<p>Create the table</p>
+<pre><code class="language-ssh">CREATE DATABASE icinga2;
 </code></pre>
-<p>We also use a link to the /etc/apache2/conf-available with <code>ln -s /etc/apache2/conf-available/phpmyadmin.conf /etc/apache2/conf-enabled/phpmyadmin.conf</code>.</p>
-<p>Using the <code>dpkg-reconfigure phpmyadmin</code> command, we can select the web server we are using (such as Apache) and enter the MySQL credentials that were specified earlier. This step configures phpMyAdmin to connect to the MySQL server. After completing this configuration, phpMyAdmin will be able to successfully establish a connection to the MySQL server, allowing for database management through its web interface.</p>
-<p>Important: Restart apache before trying to reach your server in the browser.</p>
+<p>Create a User Account for Icinga2</p>
+<pre><code class="language-ssh">CREATE USER 'fw061'@'localhost' IDENTIFIED BY 'sdi';
+</code></pre>
+<p>We can grant full access for the user:</p>
+<pre><code class="language-ssh">GRANT ALL PRIVILEGES ON fw061.* TO 'fw061'@'localhost';
+</code></pre>
+<p>We can create another SQL user for performing administrative tasks that employ password authentication.</p>
+<pre><code class="language-ssh">GRANT ALL ON *.* TO 'fw061_2'@'localhost' IDENTIFIED BY 'sdi' WITH GRANT OPTION;
+</code></pre>
+<p>Flush the user privileges:</p>
+<pre><code class="language-ssh">FLUSH PRIVILEGES;
+</code></pre>
+<p>Exit the shell:</p>
+<pre><code class="language-ssh">exit
+</code></pre>
+<h2 id="install-icinga2-and-monitoring-plugins-on-the-master-server">Install Icinga2 and Monitoring plugins on the Master Server</h2>
+<p>First, download the Icinga developers’ package signing key and add it to the apt system:</p>
+<pre><code class="language-ssh">curl -sSL https://packages.icinga.com/icinga.key | sudo apt-key add -
+</code></pre>
+<p>Now we need to add the repository address to an apt configuration file.</p>
+<pre><code class="language-ssh">nano /etc/apt/sources.list.d/icinga.list
+</code></pre>
+<p>Paste the following code into the file <code>/etc/apt/sources.list.d/icinga.list</code></p>
+<pre><code class="language-ssh">deb https://packages.icinga.com/ubuntu icinga-xenial main
+</code></pre>
+<p>Save and close the file, then refresh your package cache:</p>
+<pre><code class="language-ssh">apt-get update
+</code></pre>
+<p>Following the addition of the repository, apt-get will proceed to retrieve data, enabling the installation of Icinga packages.</p>
+<pre><code class="language-ssh">apt-get install icinga2 icinga2-ido-mysql monitoring-plugins -y
+</code></pre>
+<p>Again you will be asked for a configuration prompts:</p>
+<ol>
+<li>Enable Icinga 2’s ido-mysql feature? - YES</li>
+<li>Configure database for icinga2-ido-mysql with dbconfig-common? - YES</li>
+</ol>
+<p>Now we need to actually enable the Icinga database backend:</p>
+<pre><code class="language-ssh">icinga2 feature enable ido-mysql command
+</code></pre>
+<p>Restart icinga2 to use the new features:</p>
+<pre><code class="language-ssh">systemctl restart icinga2
+</code></pre>
+<p>You can check the status of icinga2 and your configuration with:</p>
+<pre><code class="language-ssh">systemctl status icinga2
+</code></pre>
+<h2 id="install-ido-mysql-driver-on-the-master-server">Install IDO MySQL driver on the Master Server</h2>
+<p>For Icinga2 to work, it needs a database. For that, we need to install the IDO MySQL driver and set up the database connection.</p>
+<pre><code class="language-ssh">apt install -y icinga2-ido-mysql
+</code></pre>
+<p>You will be asked again for configuration steps:</p>
+<ol>
+<li>You will be asked to enable the ido-mysql feature. Select Yes to continue.</li>
+<li>You will be prompted to set up the driver and create a database using the dbconfig-common utility. Select Yes to continue.</li>
+<li>You will be asked for the MySQL password for the icinga2 database. Enter the password you configured previously to continue.</li>
+<li>You will be asked to confirm the password again.</li>
+</ol>
+<p>Check the database details in <code>/etc/icinga2/features-available/ido-mysql.conf</code>:</p>
+<pre><code class="language-ssh">/**
+ * The db_ido_mysql library implements IDO functionality
+ * for MySQL.
+ */
+
+library &quot;db_ido_mysql&quot;
+
+object IdoMysqlConnection &quot;ido-mysql&quot; {
+  user = &quot;icinga2&quot;,
+  password = &quot;sdi&quot;,
+  host = &quot;localhost&quot;,
+  database = &quot;icinga2&quot;
+}
+</code></pre>
+<p>Restart the Icinga2 Service:</p>
+<pre><code class="language-ssh">systemctl restart icinga2
+</code></pre>
+<p>You can check the status again:</p>
+<pre><code class="language-ssh">systemctl status icinga2
+</code></pre>
+<h2 id="configure-icinga2-api">Configure Icinga2 API</h2>
+<p>The last step before we can configure the web setup is to adjust Icinga's API. Install Icinga Web with <code>apt-get</code>:</p>
+<pre><code class="language-ssh">icinga2 api setup
+</code></pre>
+<p>Notice the output that you get. The end should say something like:
+<code>Now restart your Icinga 2 daemon to finish the installation!</code></p>
+<p>We need a new user with minimal permissions required by Icinga Web. Open the api-users.conf file for editing.</p>
+<pre><code class="language-ssh">nano /etc/icinga2/conf.d/api-users.conf
+</code></pre>
+<p>Append the provided code to the end of the file, and be sure to select a robust password for the API.</p>
+<pre><code class="language-ssh">/** api for icingaweb2 */
+object ApiUser &quot;icingaweb2&quot; {
+  password = &quot;PassWordApiIcingaWeb2&quot;
+  permissions = [ &quot;status/query&quot;, &quot;actions/*&quot;, &quot;objects/modify/*&quot;, &quot;objects/query/*&quot; ]
+}
+</code></pre>
+<p>Make a note of the credentials which will be needed later on to access the website. The Icinga2 API server listens on port 5665 by default.
+Restart the service for the changes to be applied:</p>
+<pre><code class="language-ssh">systemctl restart icinga2
+</code></pre>
+<p>Now we can install the Web Interface:</p>
+<h2 id="prepare-web-setup">Prepare Web Setup</h2>
+<p>Let’s install Icinga Web with apt-get:</p>
+<pre><code class="language-ssh">apt-get install icingaweb2
+</code></pre>
+<p>We have to adjust the config file:</p>
+<pre><code class="language-ssh">nano /etc/php/7.0/apache2/php.ini
+</code></pre>
+<p>In the file <code>/etc/php/7.0/apache2/php.ini</code> we can add the following lines:</p>
+<pre><code class="language-ssh">date.timezone = Europe/Berlin
+</code></pre>
+<p>Restart Apache for the changes to take effect:</p>
 <pre><code class="language-ssh">systemctl restart apache2
 </code></pre>
-<!-- ```ssh
-Login:
-phpmyadmin@localhost
-
-Password:
-sdi
-``` -->
-
-<p>When everything is correctly set up you can go to the phpmyadmin website and log in with your credentials.
-<img alt="Check Authentication" src="/media/phpmyadmin.jpeg" />
-When successfully logged in you get to this screen.
-<img alt="Check Authentication" src="/media/phpmyadmin_logged_in.jpeg" /></p></div>
+<h2 id="setting-up-icingaweb">Setting up IcingaWeb</h2>
+<p>We should now be able to access the web interface of Icinga via this URL:</p>
+<pre><code class="language-ssh">http://fw061.g8.sdi.mi.hdm-stuttgart.de/icingaweb2/setup
+</code></pre>
+<p>In order to start the configuration process we have to create a token first that we can use to get access:</p>
+<pre><code class="language-ssh">icingacli setup token create
+</code></pre>
+<p>Take the token from the output and paste it into the input field <code>Setup Token</code> on the website</p>
+<p><img alt="icinga - 1" src="/media/icinga/1.png" /></p>
+<p>As a default configuration we have the monitoring plugin installed. We can leave it like that and click on next.</p>
+<p><img alt="icinga - 2" src="/media/icinga/2.png" /></p>
+<p>We get an overview of the status of systems and configurations. For example which PHP version is installed and which databases are available.</p>
+<p><img alt="icinga - 3" src="/media/icinga/3.png" /></p>
+<p>We can choose the authentication type that we want to use. We could also choose LDAP for authentication. Since we have previously configured our database with users, we choose that.</p>
+<p><img alt="icinga - 4" src="/media/icinga/4.png" /></p></div>
             </div>
         </div>
 

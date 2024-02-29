@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Extending an existing entry - My Docs</title>
+        <title>Extending an existing entry - Software defined Infrastructure</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">My Docs</a>
+                <a class="navbar-brand" href="../..">Software defined Infrastructure</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -165,6 +165,31 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Icinga <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../icinga/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/set-up/" class="dropdown-item">Set Up</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/functional-checks/" class="dropdown-item">Functional Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="navitem">
                                 <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
@@ -206,6 +231,14 @@
             
             <li class="nav-item" data-level="1"><a href="#extending-an-existing-entry" class="nav-link">Extending an existing entry</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#extend-entry-by-objectclass-posixaccount" class="nav-link">Extend entry by objectclass posixAccount</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -214,9 +247,11 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="extending-an-existing-entry">Extending an existing entry</h1>
+<p>As before, we use Apache Directory Studio for these steps.</p>
+<h2 id="extend-entry-by-objectclass-posixaccount">Extend entry by objectclass posixAccount</h2>
 <p>There are two ways to extend an existing entry. We'll extend our user jsmith with an posixAccount objectClass.
-One way would be to right click within the jsmith object and select <code>Add new value</code>. Then you can select the value you want to extend your entry with. In our case it would be <code>posixAccount</code>. After selecting the value we can click next and choose a proper value. We choose 1000.
-The other way would be to select <code>LDAP</code> in the toolbar and choose <code>New LDIF File</code>. You can paste this code to the <code>LDIF</code> file.</p>
+One way would be to right click within the jsmith object and select <code>Add new value</code>. Then you can select the value you want to extend your entry with. In our case it would be <code>posixAccount</code>. After selecting the value we can click next and choose a proper value. We choose 1000.</p>
+<p>The other way would be to select <code>LDAP</code> in the toolbar and choose <code>New LDIF File</code>. You can paste this code to the <code>LDIF</code> file.</p>
 <pre><code class="language-ssh">dn: uid=jsmith,ou=devel,ou=software,ou=departments,dc=betrayer,dc=com
 changetype: modify
 add: objectClass
@@ -238,7 +273,11 @@ changetype: modify
 add: objectClass
 objectClass: posixAccount
 ...
-</code></pre></div>
+</code></pre>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-ldif-files-to-make-changes-to-an-openldap-system">www.digitalocean.com/community/tutorials/how-to-use-ldif-files-to-make-changes-to-an-openldap-system</a></li>
+</ol></div>
             </div>
         </div>
 

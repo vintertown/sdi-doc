@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>General - My Docs</title>
+        <title>General - Software defined Infrastructure</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">My Docs</a>
+                <a class="navbar-brand" href="../..">Software defined Infrastructure</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -165,6 +165,31 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Icinga <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../icinga/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/set-up/" class="dropdown-item">Set Up</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/functional-checks/" class="dropdown-item">Functional Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="navitem">
                                 <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
@@ -231,20 +256,21 @@
 
 <h1 id="dns">DNS</h1>
 <h2 id="what-is-dns">What is DNS?</h2>
-<p><a href="/acronyms">DNS</a>, or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical <a href="/acronyms">IP</a> addresses. It is indispencible for accessing services on the internet. Only with the <a href="/acronyms">DNS</a>
+<p><a href="/acronyms">DNS</a>, or the Domain Name System, is a hierarchical and distributed naming system that is fundamental to the functioning of the Internet. It serves as a translator between human-readable domain names and numerical <a href="/acronyms">IP</a> addresses. It is indispensable for accessing services on the internet. Only with the <a href="/acronyms">DNS</a>
 can an internet user access a website by entering a <a href="/acronyms">URL</a> or send an email with a domain ending (e.g. @hdm-stuttgart.de).</p>
 <h2 id="how-does-dns-work">How does DNS work?</h2>
-<p><a href="/acronyms">DNS</a> works through a hirahierarchical, distributed order.</p>
+<p><a href="/acronyms">DNS</a> works through a hierarchical, distributed order.</p>
 <ol>
 <li>A user enters an <a href="/acronyms">URL</a> (e.g., www.beispieldomain.de) into a web browser.</li>
 <li>(When cache is not empty) The user's device checks its local <a href="/acronyms">DNS</a> resolver (typically provided by the Internet Service Provider or configured manually). This resolver may have a cache of recently resolved domain names.</li>
 <li>When there is no cache available the root server is the first step in translating the given host names into <a href="/acronyms">IP</a> addresses. It will point to the top-level domain of the given domain name.</li>
 <li>Top-level domain server (like denic) is responsible for translating the domain which the user bought (e.g. beispieldomain.de) to the given <a href="/acronyms">IP</a> address.</li>
-<li>The top-level domain server provides informations about the authoritative <a href="/acronyms">DNS</a> server. The authoritative <a href="/acronyms">DNS</a> server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the <a href="/acronyms">IP</a> address associated with the specific host name.</li>
+<li>The top-level domain server provides information about the authoritative <a href="/acronyms">DNS</a> server. The authoritative <a href="/acronyms">DNS</a> server for the second-level domain (e.g., "beispieldomain.de") holds information about the requested host name (e.g., "www"). It is this server that can provide the <a href="/acronyms">IP</a> address associated with the specific host name.</li>
 </ol>
-<p><img alt="DNS Namensbaum" src="https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp" /></p>
+<p><img alt="DNS Namensbaum" src="https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp" />
+<a href="https://www.denic.de/fileadmin/public/user_upload/namensbaum.jpg.webp">Source denic.de</a></p>
 <p><strong>Difference between DNS server and DNS resolver</strong></p>
-<p>A <a href="/acronyms">DNS</a> resolver is a service that provides an <a href="/acronyms">IP</a> address for a domain name on request. It is the counter part to <a href="/acronyms">NS</a>, which contain the actual <a href="/acronyms">DNS</a> information</p>
+<p>A <a href="/acronyms">DNS</a> resolver is a service that provides an <a href="/acronyms">IP</a> address for a domain name on request. It is the counterpart to <a href="/acronyms">NS</a>, which contain the actual <a href="/acronyms">DNS</a> information.</p>
 <p><strong>Good to know</strong></p>
 <p>DENIC operates a worldwide network of name servers to provide the name service for the German top-level domain .de and the German ENUM domain .9.4.e164.arpa. This currently comprises 19 locations in 17 cities on five continents.</p>
 <h2 id="types-of-dns">Types of DNS</h2>
