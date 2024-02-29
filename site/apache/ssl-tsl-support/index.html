@@ -150,6 +150,10 @@
 <li>
     <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -239,19 +243,23 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-1-becoming-your-own-ca" class="nav-link">Step 1: Becoming your own CA</a>
+            <li class="nav-item" data-level="2"><a href="#becoming-your-own-ca" class="nav-link">Becoming your own CA</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-2-creating-a-certificate-request" class="nav-link">Step 2: Creating a certificate request</a>
+            <li class="nav-item" data-level="2"><a href="#creating-a-certificate-request" class="nav-link">Creating a certificate request</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-3-signing-the-certificate-request-to-generate-the-certificate" class="nav-link">Step 3: Signing the certificate request to generate the certificate</a>
+            <li class="nav-item" data-level="2"><a href="#signing-the-certificate-request-to-generate-the-certificate" class="nav-link">Signing the certificate request to generate the certificate</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-4-adding-ca-as-trusted-to-your-browser" class="nav-link">Step 4: Adding CA as trusted to your Browser</a>
+            <li class="nav-item" data-level="2"><a href="#adding-ca-as-trusted-to-your-browser" class="nav-link">Adding CA as trusted to your Browser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -263,12 +271,12 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="ssltsl-support">SSL/TSL Support</h1>
-<p>We used the linked manual as a base layer for this exercise: <a href="https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858">https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858</a></p>
+<p>We use the link manual as a base layer for this exercise: <a href="https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858">https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858</a></p>
 <h2 id="motivation">Motivation</h2>
 <p>Our goal with this task is to create our own CA and store a certificate file in our browser so that we are able to authenticate via SSL and use a save connection with <code>https</code>. To achieve this we also need a certificate file, which is signed via the CA and store it on the remote server.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>We have created a <code>/cert</code> folder under the <code>/home</code> directory to create all our data.</p>
-<h2 id="step-1-becoming-your-own-ca">Step 1: Becoming your own CA</h2>
+<h2 id="becoming-your-own-ca">Becoming your own CA</h2>
 <p>First we want to become our own CA (Certificate Authority). For that we first have to generate a key and secondly create a certificate <code>.pem</code>-file</p>
 <p>Generate a key with:</p>
 <pre><code class="language-ssh">openssl genrsa -des3 -out rootCA.key 2048
@@ -299,7 +307,7 @@ An optional company name []:
 <p>To check the just created root certificate:</p>
 <pre><code class="language-ssh">openssl x509 -in rootCA.pem -text -noout
 </code></pre>
-<h2 id="step-2-creating-a-certificate-request">Step 2: Creating a certificate request</h2>
+<h2 id="creating-a-certificate-request">Creating a certificate request</h2>
 <p>We use the <code>openssl</code>-command-line tool to generate a private key.</p>
 <pre><code class="language-ssh">openssl genrsa -out tls.key 2048
 </code></pre>
@@ -317,7 +325,7 @@ subjectAltName = @alt_names
 [ alt_names ]
 DNS.1 = *.g8.sdi.mi.hdm-stuttgart.de
 </code></pre>
-<h2 id="step-3-signing-the-certificate-request-to-generate-the-certificate">Step 3: Signing the certificate request to generate the certificate</h2>
+<h2 id="signing-the-certificate-request-to-generate-the-certificate">Signing the certificate request to generate the certificate</h2>
 <pre><code class="language-ssh">openssl x509 -req \
     -in tls.csr \
     -CA rootCA.pem \
@@ -334,8 +342,8 @@ DNS.1 = *.g8.sdi.mi.hdm-stuttgart.de
 <p>We get the following output when testing the file:</p>
 <pre><code class="language-ssh">tls.crt:OK
 </code></pre>
-<h2 id="step-4-adding-ca-as-trusted-to-your-browser">Step 4: Adding CA as trusted to your Browser</h2>
-<p>On our local machine</p>
+<h2 id="adding-ca-as-trusted-to-your-browser">Adding CA as trusted to your Browser</h2>
+<p>On our local machine:</p>
 <pre><code class="language-ssh">sudo scp -i ~/.ssh/sdi_nv023 root@sdi08a.mi.hdm-stuttgart.de:/home/cert/rootCA.pem /home
 </code></pre>
 <p>Important: Use sudo for executing this command, otherwise you do not have the permission to copy the file to your machine.</p>
@@ -350,7 +358,11 @@ DNS.1 = *.g8.sdi.mi.hdm-stuttgart.de
 </ol>
 <p>When visiting the website now we can see that the certificate is valid and <code>https</code> works.
 The following image is shown, when clicking on the certificate:</p>
-<p><img alt="Certificate Viewer Config" src="/media/certificate_viewer_config.jpg" /></p></div>
+<p><img alt="Certificate Viewer Config" src="/media/certificate_viewer_config.jpg" /></p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858">www.dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858</a></li>
+</ol></div>
             </div>
         </div>
 

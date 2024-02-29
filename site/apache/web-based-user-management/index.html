@@ -150,6 +150,10 @@
 <li>
     <a href="./" class="dropdown-item active">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -207,7 +211,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../file-cloud/general/" class="nav-link">
+                                <a rel="next" href="../publish-documentation/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -231,11 +235,15 @@
             
             <li class="nav-item" data-level="1"><a href="#providing-web-based-user-management-to-your-ldap-server" class="nav-link">Providing WEB based user management to your LDAP Server</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#step-1" class="nav-link">Step 1:</a>
+            <li class="nav-item" data-level="2"><a href="#motivation" class="nav-link">Motivation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-2" class="nav-link">Step 2:</a>
+            <li class="nav-item" data-level="2"><a href="#installing-ldap-account-manager" class="nav-link">Installing LDAP Account Manager:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configure-ldap-account-manager" class="nav-link">Configure LDAP Account Manager:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -247,13 +255,15 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="providing-web-based-user-management-to-your-ldap-server">Providing WEB based user management to your LDAP Server</h1>
-<h2 id="step-1">Step 1:</h2>
+<h2 id="motivation">Motivation</h2>
+<p>We want to be able to control LDAP via our web browser and use the LDAP Account Manager for this purpose.</p>
+<h2 id="installing-ldap-account-manager">Installing LDAP Account Manager:</h2>
 <p>First we install the ldap-account-manager with the following command:</p>
 <pre><code class="language-ssh">apt install ldap-account-manager
 </code></pre>
 <p>When the installation was successful we can enter the web platform via this url:
 <code>http://g8.sdi.mi.hdm-stuttgart.de/lam</code></p>
-<h2 id="step-2">Step 2:</h2>
+<h2 id="configure-ldap-account-manager">Configure LDAP Account Manager:</h2>
 <p>First we need to access the lam-configurations and edit the <code>server profiles</code>. The standard password is set to <code>lam</code>.</p>
 <p>We update the server settings and the security settings within the general settings with our ldap configuration.
 <img alt="ldap authentication management web platform" src="/media/lam_1.jpeg" />
