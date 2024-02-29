@@ -86,6 +86,43 @@ apt -y install libnss-ldap libpam-ldap ldap-utils
 
 Afterwards a configuration panel starts. You can configure [LDAP](/acronyms) with the following configurations:
 
+1. Set LDAP URI- This can be IP address or hostname. Click `OK` to continue.
+2. Set a Distinguished name of the search base: In our case it is: `dc=example,dc=com`. Click `OK` to continue.
+3. Select the [LDAP](/acronyms) version you want to use. We use `3`. Click `OK` to continue.
+4. The next prompt asks: Make local root Database admin. Continue with `Yes`.
+5. The next prompt asks: Does the LDAP database require login? Continue with `No`.
+6. Set LDAP account for the root. We use `cn=admin,cd=example,cn=com`.
+7. Provide your LDAP root account password
+
+After the installation, modify the file `/etc/nsswitch.conf` and include [LDAP](/acronyms) authentication in the passwd and group lines.
+
+```ssh
+passwd: compat systemd ldap
+group: compat systemd ldap
+shadow: compat
+```
+
+Edit the file `/etc/pam.d/common-password` and remove the "use_authtok" directive from line 26, resulting in the updated configuration.
+
+```ssh
+password [success=1 user_unknown=ignore default=die] pam_ldap.so try_first_pass
+```
+
+Activate the creation of a home directory on the first login by appending the following line to the end of the file `/etc/pam.d/common-session`.
+
+```ssh
+session optional pam_mkhomedir.so skel=/etc/skel umask=077
+```
+
+You can test your configurations by switching to a user account on [LDAP](/acronyms).
+
+```ssh
+root@server1:~# sudo su - jmutai
+Creating directory '/home/jmutai'.
+jmutai@server1:~$ id
+uid=10000(jmutai) gid=10000(sysadmins) groups=10000(sysadmins)
+```
+
 ## References
 
 1. [www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux](https://www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux)

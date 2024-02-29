@@ -188,10 +188,6 @@
 <li>
     <a href="./" class="dropdown-item active">SNMP Checks</a>
 </li>
-                                    
-<li>
-    <a href="../ssh-based-checks/" class="dropdown-item">SSH Checks</a>
-</li>
                                 </ul>
                             </li>
                             <li class="navitem">
@@ -211,7 +207,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../ssh-based-checks/" class="nav-link">
+                                <a rel="next" href="../../acronyms/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -252,7 +248,7 @@
 
 <h1 id="snmp-based-checks">SNMP based checks</h1>
 <h2 id="setup">Setup</h2>
-<p>Installing SNMP Daemon with the following command:</p>
+<p>Installing <a href="/acronyms">SNMP</a> Daemon with the following command:</p>
 <pre><code class="language-ssh">sudo apt-get install snmpd
 </code></pre>
 <p>Configure the Daemon with:</p>
@@ -265,12 +261,12 @@
 includeAllDisks
 
 </code></pre>
-<p>Restart the SNMP Daemon</p>
+<p>Restart the <a href="/acronyms">SNMP</a> Daemon</p>
 <pre><code class="language-ssh">sudo service snmpd restart
 </code></pre>
 <h2 id="install-snmp-to-icinga">Install SNMP to Icinga</h2>
 <h4 id="installing-snmp-plugin">Installing SNMP Plugin</h4>
-<p>With the following command you can firstly install the SNMP Plugin:</p>
+<p>With the following command you can firstly install the <a href="/acronyms">SNMP</a> Plugin:</p>
 <pre><code class="language-ssh">apt-get install monitoring-plugins
 </code></pre>
 <h4 id="configure-snmp-in-icinga-server">Configure SNMP in Icinga Server</h4>

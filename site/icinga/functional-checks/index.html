@@ -188,10 +188,6 @@
 <li>
     <a href="../snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
 </li>
-                                    
-<li>
-    <a href="../ssh-based-checks/" class="dropdown-item">SSH Checks</a>
-</li>
                                 </ul>
                             </li>
                             <li class="navitem">
@@ -260,7 +256,7 @@
 <pre><code class="language-ssh">sudo apt-get update
 sudo apt-get install nagios-plugins
 </code></pre>
-<p>Configure http(s) for your web server:</p>
+<p>Configure <a href="/acronyms">HTTP(s)</a> for your web server:</p>
 <pre><code class="language-ssh">sudo nano /etc/nagios-plugins/config/http.cfg
 </code></pre>
 <p>Add this to the configuration:</p>
@@ -283,7 +279,7 @@ sudo apt-get install nagios-plugins
 <pre><code class="language-ssh">HTTP CRITICAL - Konnte TCP socket nicht öffnen
 </code></pre>
 <h2 id="ping-ldap">Ping LDAP</h2>
-<p>We can use this command to ping our LDAP server:</p>
+<p>We can use this command to ping our <a href="/acronyms">LDAP</a> server:</p>
 <pre><code class="language-ssh">/usr/lib/nagios/plugins/check_ldap -H ldap://vm1.g8.sdi.mi.hdm-stuttgart.de -b &quot;dc=example,dc=com&quot; -D &quot;cn=admin,dc=example,dc=com&quot; -P 'new_password'
 </code></pre>
 <p>We get the following output:</p>

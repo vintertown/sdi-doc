@@ -188,10 +188,6 @@
 <li>
     <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
 </li>
-                                    
-<li>
-    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
-</li>
                                 </ul>
                             </li>
                             <li class="navitem">
@@ -309,6 +305,39 @@ Now it's time to open a second shell. In case of emergency this means that we ac
 <pre><code class="language-ssh">141.62.75.108 vm1.g8.sdi.mi.hdm-stuttgart.de
 </code></pre>
 <p>For installing the <a href="/acronyms">LDAP</a> client we use the exact instructions like in this one here <a href="https://computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/">www.computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/</a></p>
+<p>First you can include the LDAP server address in the /etc/hosts file in case there is no operational DNS server in your network.</p>
+<pre><code class="language-ssh">sudo nano /etc/hosts
+</code></pre>
+<p>Then install the <a href="/acronyms">LDAP</a> client with the following command:</p>
+<pre><code class="language-ssh">apt -y install libnss-ldap libpam-ldap ldap-utils
+</code></pre>
+<p>Afterwards a configuration panel starts. You can configure <a href="/acronyms">LDAP</a> with the following configurations:</p>
+<ol>
+<li>Set LDAP URI- This can be IP address or hostname. Click <code>OK</code> to continue.</li>
+<li>Set a Distinguished name of the search base: In our case it is: <code>dc=example,dc=com</code>. Click <code>OK</code> to continue.</li>
+<li>Select the <a href="/acronyms">LDAP</a> version you want to use. We use <code>3</code>. Click <code>OK</code> to continue.</li>
+<li>The next prompt asks: Make local root Database admin. Continue with <code>Yes</code>.</li>
+<li>The next prompt asks: Does the LDAP database require login? Continue with <code>No</code>.</li>
+<li>Set LDAP account for the root. We use <code>cn=admin,cd=example,cn=com</code>.</li>
+<li>Provide your LDAP root account password</li>
+</ol>
+<p>After the installation, modify the file <code>/etc/nsswitch.conf</code> and include <a href="/acronyms">LDAP</a> authentication in the passwd and group lines.</p>
+<pre><code class="language-ssh">passwd: compat systemd ldap
+group: compat systemd ldap
+shadow: compat
+</code></pre>
+<p>Edit the file <code>/etc/pam.d/common-password</code> and remove the "use_authtok" directive from line 26, resulting in the updated configuration.</p>
+<pre><code class="language-ssh">password [success=1 user_unknown=ignore default=die] pam_ldap.so try_first_pass
+</code></pre>
+<p>Activate the creation of a home directory on the first login by appending the following line to the end of the file <code>/etc/pam.d/common-session</code>.</p>
+<pre><code class="language-ssh">session optional pam_mkhomedir.so skel=/etc/skel umask=077
+</code></pre>
+<p>You can test your configurations by switching to a user account on <a href="/acronyms">LDAP</a>.</p>
+<pre><code class="language-ssh">root@server1:~# sudo su - jmutai
+Creating directory '/home/jmutai'.
+jmutai@server1:~$ id
+uid=10000(jmutai) gid=10000(sysadmins) groups=10000(sysadmins)
+</code></pre>
 <h2 id="references">References</h2>
 <ol>
 <li>
