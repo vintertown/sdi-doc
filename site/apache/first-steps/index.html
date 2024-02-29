@@ -150,6 +150,10 @@
 <li>
     <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -262,9 +266,9 @@
 <h2 id="installing-apache">Installing Apache</h2>
 <p>To install our server we need the latest version of Apache. We can install the version with the following command:</p>
 <p><code>aptitude install apache2</code></p>
-<p>Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our VM in the previous <a href="/dns/transfer-dns-configurations">DNS task</a>, we can call it globally and see the default page.</p>
+<p>Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our virtual machine in the previous <a href="/dns/transfer-dns-configurations">DNS task</a>, we can call it globally and see the default page.</p>
 <h2 id="using-the-default-apache-frontend">Using the default Apache frontend</h2>
-<p>We have moved the index.html file which was located in the path /var/www/html to the root folder. When reloading the web page again, a new default page appears. It shows the Apache and Linux version.</p>
+<p>We have moved the index.html file which was located in the path <code>/var/www/html to the root folder</code>. When reloading the web page again, a new default page appears. It shows the Apache and Linux version.</p>
 <h2 id="hosting-own-content">Hosting own content</h2>
 <p>We can now host our own index.html page with the following content:</p>
 <pre><code class="language-ssh">&lt;!DOCTYPE html&gt;
@@ -282,10 +286,10 @@
 <p>First we install the apache2 documentation with the following command</p>
 <pre><code class="language-ssh">apt install apache2-doc
 </code></pre>
-<p>But how can we access this documentation via our website?
-We use <code>dpkg</code> as the command for package management and use <code>-L</code> to examine all the files the package contains. Perhaps we can find a way to access the path here. To examine the output that you get with the <code>dpkg</code> command we can use the following:
+<p>After installation, you might wonder how to access this documentation via your website. 
+To locate the documentation files, you can use the <code>dpkg</code> command for package management. By using the <code>-L</code> flag, you can list all the files contained within the package. This will help us identify the path to access the documentation. To examine the output that you get with the <code>dpkg</code> command we can use the following:
 <code>dpkg -L apache2-doc &gt; files.txt</code></p>
-<p>This will save the output to a <code>files.txt</code>-file. This way we can examine the whole output. Without doing so, it would be not possible to see everything within your console.</p>
+<p>This will save the output to a <code>files.txt</code>-file. This way we can examine the whole output.</p>
 <p>We get the following output:</p>
 <pre><code class="language-ssh">/.
 /etc
@@ -302,18 +306,18 @@ We use <code>dpkg</code> as the command for package management and use <code>-L<
 <p>When taking a close look on the output you can find a conf-available file.
 Within this file you will find an Alias that looks like this: <code>Alias /manual /usr/share/doc/apache2-doc/manual</code>
 This directive tells Apache where to serve the documentation files from in the URL path.
-If the configuration is not already enabled, use the a2enconf command to enable it, and then restart Apache:</p>
+If the configuration is not already enabled, use the <code>a2enconf</code> command to enable it, and then restart Apache:</p>
 <pre><code class="language-ssh">a2enconf apache2-doc
 systemctl restart apache2
 </code></pre>
-<p>Now you should be able to access the manuals on <code>vm1.g8.mi.hdm-stuttgart.de/manual</code></p>
+<p>Now you should be able to access the manual on <code>vm1.g8.mi.hdm-stuttgart.de/manual</code></p>
 <h2 id="uploading-our-own-documentation">Uploading our own documentation</h2>
 <p>In order to upload and access our sdi-docs with a browser client, we can use scp with the following command <code>scp -r site/ root@sdi08a.mi.hdm-stuttgart.de:/home/Sdidoc</code>.
 This uploads the docs to our machine. Now we can adjust the apache configuration file <code>000-default.conf</code> (<code>/etc/apache2/sites-available/</code>) with:</p>
 <ul>
 <li>Add the following lines to set permissions for apache to enter <code>/home/...</code>:</li>
 </ul>
-<pre><code class="language-ssh">&lt;Directory /home/sdidoc&gt;
+<pre><code class="language-ssh">&lt;Directory /home/Sdidoc/site&gt;
     Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted

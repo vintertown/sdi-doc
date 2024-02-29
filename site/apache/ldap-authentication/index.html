@@ -150,6 +150,10 @@
 <li>
     <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -235,7 +239,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#1-step-create-a-test-user" class="nav-link">1. Step: Create a test user</a>
+            <li class="nav-item" data-level="2"><a href="#create-a-test-user" class="nav-link">Create a test user</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -249,14 +253,14 @@
 <h1 id="ldap-authentication">LDAP authentication</h1>
 <h2 id="motivation">Motivation</h2>
 <p>We want to limit the manual directory by providing a <a href="/acronyms">LDAP</a> based authentication.</p>
-<h2 id="1-step-create-a-test-user">1. Step: Create a test user</h2>
+<h2 id="create-a-test-user">Create a test user</h2>
 <p>We create a test user <code>tuser</code> with Apache Directory Studio.</p>
 <p><img alt="New Entry" src="/media/new_entry.jpeg" /></p>
 <p>For security set a SMD5 hashed password.</p>
 <p><img alt="SMD5" src="/media/smd5.jpeg" /></p>
 <p>We can now check the bind configuration</p>
 <p><img alt="Check Authentication" src="/media/check_authentication.jpeg" /></p>
-<p>In the /etc/apache2/sites-available/manual.conf we can add the LDAP Directory Tree for authentication with the <code>tuser</code> credentials.</p>
+<p>In the <code>/etc/apache2/sites-available/manual.conf</code> we can add the LDAP Directory Tree for authentication with the <code>tuser</code> credentials.</p>
 <pre><code class="language-ssh">&lt;VirtualHost *:80&gt;
   ServerAdmin fw061@hdm-stuttgart.de
   DocumentRoot /usr/share/doc/apache2-doc/manual
@@ -280,7 +284,8 @@
 <p>We should restart the apache server again:</p>
 <pre><code class="language-ssh">systemctl restart apache2
 </code></pre>
-<p><img alt="LDAP Authentication" src="/media/ldap_authentication.jpeg" /></p></div>
+<p>Now you should see this login screen, when visiting the manual site of our virtual machine.
+<img alt="LDAP Authentication" src="/media/ldap_authentication.jpeg" /></p></div>
             </div>
         </div>
 

@@ -150,6 +150,10 @@
 <li>
     <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -252,7 +256,7 @@
 
 <h1 id="virtual-hosts">Virtual Hosts</h1>
 <h2 id="define-dns-aliases">Define DNS aliases</h2>
-<p>For the sake of simplicity, we have created 2 A records on the nssdi.mi.hdm-stuttgart.de server. One for <code>fw061</code> and one for <code>manual</code> which both point to our server. Now we can access the server publicly via fw061.g8.sdi.mi.hdm-stuttgart.de and manual.g8.sdi.mi.hdm-stuttgart.de. You can find access to the process <a href="/dns/transfer-dns-configurations">here</a>.</p>
+<p>For the sake of simplicity, we have created 2 A records on the nssdi.mi.hdm-stuttgart.de server. One for <code>fw061</code> and one for <code>manual</code> which both point to our server. Now we can access the server publicly via fw061.g8.sdi.mi.hdm-stuttgart.de and manual.g8.sdi.mi.hdm-stuttgart.de. You can find access to the process in our previous chapter <a href="/dns/transfer-dns-configurations">here</a>.</p>
 <h2 id="creating-config-files-for-new-subdomains">Creating config files for new subdomains</h2>
 <p>In the main config file <code>etc/apache2/apache2.conf</code>, we are adding the follwing instructions:</p>
 <pre><code class="language-ssh">&lt;Directory /home/Sdidoc/site&gt;

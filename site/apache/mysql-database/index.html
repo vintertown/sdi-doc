@@ -150,6 +150,10 @@
 <li>
     <a href="../web-based-user-management/" class="dropdown-item">Web Based User Management</a>
 </li>
+                                    
+<li>
+    <a href="../publish-documentation/" class="dropdown-item">Publish Documentation</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -231,11 +235,15 @@
             
             <li class="nav-item" data-level="1"><a href="#mysqltm-database-administration" class="nav-link">MySQL™ database administration</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#step-1-install-mysql" class="nav-link">Step 1: Install MySQL</a>
+            <li class="nav-item" data-level="2"><a href="#motivation" class="nav-link">Motivation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#step-2-install-phpmyadmin" class="nav-link">Step 2: Install phpmyadmin</a>
+            <li class="nav-item" data-level="2"><a href="#install-mysql" class="nav-link">Install MySQL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#install-phpmyadmin" class="nav-link">Install phpmyadmin</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -247,17 +255,19 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="mysqltm-database-administration">MySQL™ database administration</h1>
-<h2 id="step-1-install-mysql">Step 1: Install MySQL</h2>
-<p>First we can install the default-mysql-server</p>
+<h2 id="motivation">Motivation</h2>
+<p>We want to install a MySQL Server on our Apache Webserver and access it with PhpMyAdmin.</p>
+<h2 id="install-mysql">Install MySQL</h2>
+<p>First we can install the default-mysql-server.</p>
 <pre><code class="language-ssh">apt install mysql-server
 </code></pre>
 <p>and start the server</p>
 <pre><code class="language-ssh">systemctl start mysql
 </code></pre>
-<p>To see whether everything works correctly we can use</p>
+<p>To see whether everything works correctly we can use.</p>
 <pre><code class="language-ssh">systemctl status mysql
 </code></pre>
-<p>It provides us the following feedback</p>
+<p>It provides us the following feedback.</p>
 <pre><code class="language-ssh">● mariadb.service - MariaDB 10.11.6 database server
      Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; preset: enabled)
      Active: active (running) since Mon 2024-02-19 21:07:45 CET; 1min 9s ago
@@ -330,7 +340,7 @@ installation should now be secure.
 
 Thanks for using MariaDB!
 </code></pre>
-<h2 id="step-2-install-phpmyadmin">Step 2: Install phpmyadmin</h2>
+<h2 id="install-phpmyadmin">Install phpmyadmin</h2>
 <p>Install phpmyadmin with the following command:</p>
 <pre><code class="language-ssh">apt install phpmyadmin
 </code></pre>
