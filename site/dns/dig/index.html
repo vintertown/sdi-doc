@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Querying DNS data - My Docs</title>
+        <title>Querying DNS data - Software defined Infrastructure</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">My Docs</a>
+                <a class="navbar-brand" href="../..">Software defined Infrastructure</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -165,6 +165,31 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Icinga <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../icinga/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/set-up/" class="dropdown-item">Set Up</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/functional-checks/" class="dropdown-item">Functional Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="navitem">
                                 <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
@@ -227,10 +252,10 @@
 
 <h1 id="querying-dns-data">Querying DNS data</h1>
 <h2 id="what-is-dig">What is dig?</h2>
-<p><a href="/acronyms">dig</a> is a programm/command that is mainly used to analyse and check <a href="/acronyms">DNS</a> servers and query information from it. It has the following syntax:</p>
+<p><a href="/acronyms">dig</a> is a program/command that is mainly used to analyse and check <a href="/acronyms">DNS</a> servers and query information from it. It has the following syntax:</p>
 <pre><code class="language-ssh">dig [@Server] [Domain] [Type] [-x IP-Address]
 </code></pre>
-<p>The server is not necessary, when you only want general <a href="/acronyms">DNS</a> information for an address (see examples above).</p>
+<p>The server is not necessary when you only want general <a href="/acronyms">DNS</a> information for an address (see examples above).</p>
 <h2 id="example">Example</h2>
 <p><a href="/acronyms">CNAME</a> Record</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig www.natan-cafeandbar.com CNAME +short
@@ -259,7 +284,7 @@ natan-cafeandbar.com.
 shades20.rzone.de.
 docks02.rzone.de.
 </code></pre>
-<p>Reverse Lookup</p>
+<p>Reverse Lookup (<a href="/acronyms">PTR</a>)</p>
 <pre><code class="language-ssh">root@sdi08b:~# dig -x 81.169.145.70 +short
 
 w06.rzone.de.
