@@ -36,5 +36,8 @@ nav:
   - Icinga:
       - 'General': 'icinga/general.md'
       - 'Set Up': 'icinga/set-up.md'
+      - 'Functional Checks': 'icinga/functional-checks.md'
+      - 'SNMP Checks': 'icinga/snmp-based-checks.md'
+      - 'SSH Checks': 'icinga/ssh-based-checks.md'
 
   - Acronyms: acronyms.md

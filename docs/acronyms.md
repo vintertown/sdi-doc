@@ -23,3 +23,5 @@
 - TTL = Time To Live
 - LDIF = LDAP Data Interchange Format
 - PAM = Pluggable Authentication Modules
+- Icinga = Monitoring System
+- CPU = Central Processing Unit
