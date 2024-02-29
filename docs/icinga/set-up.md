@@ -325,6 +325,62 @@ We get an overview of the status of systems and configurations. For example whic
 
 ![icinga - 3](/media/icinga/3.png)
 
-We can choose the authentication type that we want to use. We could also choose LDAP for authentication. Since we have previously configured our database with users, we choose that.
+We can choose the authentication type that we want to use. We could also choose LDAP for authentication. Since we have previously configured our database with users, we choose Database. You will be asked to fill in the database credentials on the next page.
 
 ![icinga - 4](/media/icinga/4.png)
+
+Enter the database credentials you have previously generated. Validate the configuration by clicking the corresponding button. Once the credentials are confirmed, proceed to the next step by clicking Next. You will then be prompted to assign a name to the authentication backend.
+
+![icinga - 5](/media/icinga/5.png)
+
+Reenter your created credentials.
+
+![icinga - 6](/media/icinga/6.png)
+
+Keep the default value and proceed by clicking Next. On the following page, you will be prompted to establish an administrator account.
+
+![icinga - 7](/media/icinga/7.png)
+
+Input the credentials for your newly created administrator account and proceed by clicking Next.
+
+![icinga - 8](/media/icinga/8.png)
+
+Click Next to proceed. You will be asked to review the configuration on the last page.
+
+![icinga - 9](/media/icinga/9.png)
+
+Feel free to revisit any settings by navigating back. Once you are content with the configurations, click Next to continue.
+
+![icinga - 10](/media/icinga/10.png)
+
+Enter the database credentials that you configured earlier and click on Validate Configuration to confirm the connection. After successful verification, proceed by clicking Next. Subsequently, you will be prompted to provide the API details.
+
+![icinga - 11](/media/icinga/11.png)
+
+Enter the previously generated API credentials, set the Host as 127.0.0.1, and click on Validate Configuration to ensure the connection is valid. Once confirmed, proceed by clicking Next. In the following step, you'll be prompted to select protected custom variables for enhancing security monitoring.
+
+![icinga - 12](/media/icinga/12.png)
+
+Maintain the default values and advance by clicking Next. You will be prompted to review the Monitoring configuration. If necessary, you have the option to go back and make changes before finalizing.
+
+![icinga - 13](/media/icinga/13.png)
+
+If you are satisfied with the configurations, proceed to finalize the installation by clicking on the "Finish" button.
+
+![icinga - 14](/media/icinga/14.png)
+
+After successful completion, click the "Login to Icinga Web 2" button to open the login page at (http://fw061.g8.sdi.mi.hdm-stuttgart.de/icingaweb2/authentication/login).
+
+![icinga - 15](/media/icinga/15.png)
+
+You can now log in via Icinga's web interface.
+
+![icinga - 16](/media/icinga/16.png)
+
+You can now use Icinga on your server!
+
+![icinga - 17](/media/icinga/17.png)
+
+You can go to Overview > Services to check the status of the master server similar to the following:
+
+![icinga - 18](/media/icinga/18.png)
