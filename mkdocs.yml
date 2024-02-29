@@ -30,6 +30,7 @@ nav:
       - 'LDAP authentication': 'apache/ldap-authentication.md'
       - 'MySQL Database': 'apache/mysql-database.md'
       - 'Web Based User Management': 'apache/web-based-user-management.md'
+      - 'Publish Documentation': 'apache/publish-documentation.md'
   - File Cloud:
       - 'General': 'file-cloud/general.md'
       - 'Set Up': 'file-cloud/set-up.md'
