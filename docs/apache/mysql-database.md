@@ -1,8 +1,12 @@
 # MySQL™ database administration
 
-## Step 1: Install MySQL
+## Motivation
 
-First we can install the default-mysql-server
+We want to install a MySQL Server on our Apache Webserver and access it with PhpMyAdmin.
+
+## Install MySQL
+
+First we can install the default-mysql-server.
 
 ```ssh
 apt install mysql-server
@@ -14,13 +18,13 @@ and start the server
 systemctl start mysql
 ```
 
-To see whether everything works correctly we can use
+To see whether everything works correctly we can use.
 
 ```ssh
 systemctl status mysql
 ```
 
-It provides us the following feedback
+It provides us the following feedback.
 
 ```ssh
 ● mariadb.service - MariaDB 10.11.6 database server
@@ -99,7 +103,7 @@ installation should now be secure.
 Thanks for using MariaDB!
 ```
 
-## Step 2: Install phpmyadmin
+## Install phpmyadmin
 
 Install phpmyadmin with the following command:
 

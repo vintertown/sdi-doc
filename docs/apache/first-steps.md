@@ -6,11 +6,11 @@ To install our server we need the latest version of Apache. We can install the v
 
 `aptitude install apache2`
 
-Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our VM in the previous [DNS task](/dns/transfer-dns-configurations), we can call it globally and see the default page.
+Apache will automatically show a default page if the package has been installed correctly. Since we have already entered our virtual machine in the previous [DNS task](/dns/transfer-dns-configurations), we can call it globally and see the default page.
 
 ## Using the default Apache frontend
 
-We have moved the index.html file which was located in the path /var/www/html to the root folder. When reloading the web page again, a new default page appears. It shows the Apache and Linux version.
+We have moved the index.html file which was located in the path `/var/www/html to the root folder`. When reloading the web page again, a new default page appears. It shows the Apache and Linux version.
 
 ## Hosting own content
 
@@ -38,11 +38,11 @@ First we install the apache2 documentation with the following command
 apt install apache2-doc
 ```
 
-But how can we access this documentation via our website?
-We use `dpkg` as the command for package management and use `-L` to examine all the files the package contains. Perhaps we can find a way to access the path here. To examine the output that you get with the `dpkg` command we can use the following:
+After installation, you might wonder how to access this documentation via your website. 
+To locate the documentation files, you can use the `dpkg` command for package management. By using the `-L` flag, you can list all the files contained within the package. This will help us identify the path to access the documentation. To examine the output that you get with the `dpkg` command we can use the following:
 `dpkg -L apache2-doc > files.txt`
 
-This will save the output to a `files.txt`-file. This way we can examine the whole output. Without doing so, it would be not possible to see everything within your console.
+This will save the output to a `files.txt`-file. This way we can examine the whole output.
 
 We get the following output:
 
@@ -63,14 +63,14 @@ We get the following output:
 When taking a close look on the output you can find a conf-available file.
 Within this file you will find an Alias that looks like this: `Alias /manual /usr/share/doc/apache2-doc/manual`
 This directive tells Apache where to serve the documentation files from in the URL path.
-If the configuration is not already enabled, use the a2enconf command to enable it, and then restart Apache:
+If the configuration is not already enabled, use the `a2enconf` command to enable it, and then restart Apache:
 
 ```ssh
 a2enconf apache2-doc
 systemctl restart apache2
 ```
 
-Now you should be able to access the manuals on `vm1.g8.mi.hdm-stuttgart.de/manual`
+Now you should be able to access the manual on `vm1.g8.mi.hdm-stuttgart.de/manual`
 
 ## Uploading our own documentation
 
@@ -80,7 +80,7 @@ This uploads the docs to our machine. Now we can adjust the apache configuration
 - Add the following lines to set permissions for apache to enter `/home/...`:
 
 ```ssh
-<Directory /home/sdidoc>
+<Directory /home/Sdidoc/site>
     Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted

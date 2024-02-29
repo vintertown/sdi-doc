@@ -70,6 +70,7 @@ nano /etc/hosts
 141.62.75.108 vm1.g8.sdi.mi.hdm-stuttgart.de
 ```
 
+For installing the [LDAP](/acronyms) client we use the exact instructions like in this one here [www.computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/](https://computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/)
 ## References
 
 1. [www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux](https://www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux)

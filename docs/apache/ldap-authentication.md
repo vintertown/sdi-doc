@@ -4,7 +4,7 @@
 
 We want to limit the manual directory by providing a [LDAP](/acronyms) based authentication.
 
-## 1. Step: Create a test user
+## Create a test user
 
 We create a test user `tuser` with Apache Directory Studio.
 
@@ -18,7 +18,7 @@ We can now check the bind configuration
 
 ![Check Authentication](/media/check_authentication.jpeg)
 
-In the /etc/apache2/sites-available/manual.conf we can add the LDAP Directory Tree for authentication with the `tuser` credentials.
+In the `/etc/apache2/sites-available/manual.conf` we can add the LDAP Directory Tree for authentication with the `tuser` credentials.
 
 ```ssh
 <VirtualHost *:80>
@@ -47,5 +47,5 @@ We should restart the apache server again:
 ```ssh
 systemctl restart apache2
 ```
-
+Now you should see this login screen, when visiting the manual site of our virtual machine.
 ![LDAP Authentication](/media/ldap_authentication.jpeg)

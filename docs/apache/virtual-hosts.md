@@ -2,7 +2,7 @@
 
 ## Define DNS aliases
 
-For the sake of simplicity, we have created 2 A records on the nssdi.mi.hdm-stuttgart.de server. One for `fw061` and one for `manual` which both point to our server. Now we can access the server publicly via fw061.g8.sdi.mi.hdm-stuttgart.de and manual.g8.sdi.mi.hdm-stuttgart.de. You can find access to the process [here](/dns/transfer-dns-configurations).
+For the sake of simplicity, we have created 2 A records on the nssdi.mi.hdm-stuttgart.de server. One for `fw061` and one for `manual` which both point to our server. Now we can access the server publicly via fw061.g8.sdi.mi.hdm-stuttgart.de and manual.g8.sdi.mi.hdm-stuttgart.de. You can find access to the process in our previous chapter [here](/dns/transfer-dns-configurations).
 
 ## Creating config files for new subdomains
 

@@ -1,6 +1,6 @@
 # SSL/TSL Support
 
-We used the linked manual as a base layer for this exercise: <https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858>
+We use the link manual as a base layer for this exercise: <https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858>
 
 ## Motivation
 
@@ -10,7 +10,7 @@ Our goal with this task is to create our own CA and store a certificate file in 
 
 We have created a `/cert` folder under the `/home` directory to create all our data.
 
-## Step 1: Becoming your own CA
+## Becoming your own CA
 
 First we want to become our own CA (Certificate Authority). For that we first have to generate a key and secondly create a certificate `.pem`-file
 
@@ -54,7 +54,7 @@ To check the just created root certificate:
 openssl x509 -in rootCA.pem -text -noout
 ```
 
-## Step 2: Creating a certificate request
+## Creating a certificate request
 
 We use the `openssl`-command-line tool to generate a private key.
 
@@ -82,7 +82,7 @@ subjectAltName = @alt_names
 DNS.1 = *.g8.sdi.mi.hdm-stuttgart.de
 ```
 
-## Step 3: Signing the certificate request to generate the certificate
+## Signing the certificate request to generate the certificate
 
 ```ssh
 openssl x509 -req \
@@ -108,9 +108,9 @@ We get the following output when testing the file:
 tls.crt:OK
 ```
 
-## Step 4: Adding CA as trusted to your Browser
+## Adding CA as trusted to your Browser
 
-On our local machine
+On our local machine:
 
 ```ssh
 sudo scp -i ~/.ssh/sdi_nv023 root@sdi08a.mi.hdm-stuttgart.de:/home/cert/rootCA.pem /home
@@ -131,3 +131,7 @@ When visiting the website now we can see that the certificate is valid and `http
 The following image is shown, when clicking on the certificate:
 
 ![Certificate Viewer Config](/media/certificate_viewer_config.jpg)
+
+## References
+
+1.  [www.dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858](https://dgu2000.medium.com/working-with-self-signed-certificates-in-chrome-walkthrough-edition-a238486e6858)

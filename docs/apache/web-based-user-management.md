@@ -1,6 +1,10 @@
 # Providing WEB based user management to your LDAP Server
 
-## Step 1:
+## Motivation
+
+We want to be able to control LDAP via our web browser and use the LDAP Account Manager for this purpose.
+
+## Installing LDAP Account Manager:
 
 First we install the ldap-account-manager with the following command:
 
@@ -11,7 +15,7 @@ apt install ldap-account-manager
 When the installation was successful we can enter the web platform via this url:
 `http://g8.sdi.mi.hdm-stuttgart.de/lam`
 
-## Step 2:
+## Configure LDAP Account Manager:
 
 First we need to access the lam-configurations and edit the `server profiles`. The standard password is set to `lam`.
 
