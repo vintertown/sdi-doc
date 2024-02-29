@@ -2,7 +2,7 @@
 
 ## Setup
 
-Installing SNMP Daemon with the following command:
+Installing [SNMP](/acronyms) Daemon with the following command:
 
 ```ssh
 sudo apt-get install snmpd
@@ -24,7 +24,7 @@ includeAllDisks
 
 ```
 
-Restart the SNMP Daemon
+Restart the [SNMP](/acronyms) Daemon
 
 ```ssh
 sudo service snmpd restart
@@ -34,7 +34,7 @@ sudo service snmpd restart
 
 #### Installing SNMP Plugin
 
-With the following command you can firstly install the SNMP Plugin:
+With the following command you can firstly install the [SNMP](/acronyms) Plugin:
 
 ```ssh
 apt-get install monitoring-plugins

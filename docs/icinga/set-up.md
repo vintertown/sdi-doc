@@ -2,10 +2,10 @@
 
 ## Prerequesits
 
-We use these guides for installing Icinga on our server:
+We use these guides for installing [Icinga](/acronyms) on our server:
 
-- [www.howtoforge.com/how-to-install-icinga-2-monitoring-software-on-debian-12](https://www.howtoforge.com/how-to-install-icinga-2-monitoring-software-on-debian-12/#prerequisites)
-- [www.digitalocean.com/community/tutorials/how-to-install-icinga-and-icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-icinga-web-interface](https://www.digitalocean.com/community/tutorials/how-to-install-icinga-and-icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-icinga-web-interface)
+- [www.howtoforge.com/how-to-install-Icinga-2-monitoring-software-on-debian-12](https://www.howtoforge.com/how-to-install-Icinga-2-monitoring-software-on-debian-12/#prerequisites)
+- [www.digitalocean.com/community/tutorials/how-to-install-Icinga-and-Icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-Icinga-web-interface](https://www.digitalocean.com/community/tutorials/how-to-install-Icinga-and-Icinga-web-on-ubuntu-16-04#step-2-%E2%80%93-installing-the-Icinga-web-interface)
 
 Before starting we have to update apt:
 
@@ -15,7 +15,7 @@ Before starting we have to update apt:
 
 ## Installing MariaDB Server
 
-We want to use Icinga with MariaDB. We can install the mariadb-server with the following command:
+We want to use [Icinga](/acronyms) with MariaDB. We can install the mariadb-server with the following command:
 
 ```ssh
 apt install mariadb-server
@@ -81,7 +81,7 @@ Reload privilege tables now? [Y/n] y
 
 Cleaning up...
 
-All done!  If you've completed all of the above steps, your MariaDB
+All done! If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
@@ -95,7 +95,7 @@ sudo mysql || sudo mariadb
 
 ## Configuring MariaDB
 
-We can create a new table for Icinga with a User:
+We can create a new table for [Icinga](/acronyms) with a User:
 
 ```ssh
 sudo mysql
@@ -104,7 +104,7 @@ sudo mysql
 Create the table
 
 ```ssh
-CREATE DATABASE icinga2;
+CREATE DATABASE Icinga2;
 ```
 
 Create a User Account for Icinga2
@@ -142,19 +142,19 @@ exit
 First, download the Icinga developers’ package signing key and add it to the apt system:
 
 ```ssh
-curl -sSL https://packages.icinga.com/icinga.key | sudo apt-key add -
+curl -sSL https://packages.Icinga.com/Icinga.key | sudo apt-key add -
 ```
 
 Now we need to add the repository address to an apt configuration file.
 
 ```ssh
-nano /etc/apt/sources.list.d/icinga.list
+nano /etc/apt/sources.list.d/Icinga.list
 ```
 
-Paste the following code into the file `/etc/apt/sources.list.d/icinga.list`
+Paste the following code into the file `/etc/apt/sources.list.d/Icinga.list`
 
 ```ssh
-deb https://packages.icinga.com/ubuntu icinga-xenial main
+deb https://packages.Icinga.com/ubuntu Icinga-xenial main
 ```
 
 Save and close the file, then refresh your package cache:
@@ -163,33 +163,33 @@ Save and close the file, then refresh your package cache:
 apt-get update
 ```
 
-Following the addition of the repository, apt-get will proceed to retrieve data, enabling the installation of Icinga packages.
+Following the addition of the repository, apt-get will proceed to retrieve data, enabling the installation of [Icinga](/acronyms) packages.
 
 ```ssh
-apt-get install icinga2 icinga2-ido-mysql monitoring-plugins -y
+apt-get install Icinga2 Icinga2-ido-mysql monitoring-plugins -y
 ```
 
 Again you will be asked for a configuration prompts:
 
 1. Enable Icinga 2’s ido-mysql feature? - YES
-2. Configure database for icinga2-ido-mysql with dbconfig-common? - YES
+2. Configure database for Icinga2-ido-mysql with dbconfig-common? - YES
 
-Now we need to actually enable the Icinga database backend:
+Now we need to actually enable the [Icinga](/acronyms) database backend:
 
 ```ssh
-icinga2 feature enable ido-mysql command
+Icinga2 feature enable ido-mysql command
 ```
 
-Restart icinga2 to use the new features:
+Restart Icinga2 to use the new features:
 
 ```ssh
-systemctl restart icinga2
+systemctl restart Icinga2
 ```
 
-You can check the status of icinga2 and your configuration with:
+You can check the status of Icinga2 and your configuration with:
 
 ```ssh
-systemctl status icinga2
+systemctl status Icinga2
 ```
 
 ## Install IDO MySQL driver on the Master Server
@@ -197,17 +197,17 @@ systemctl status icinga2
 For Icinga2 to work, it needs a database. For that, we need to install the IDO MySQL driver and set up the database connection.
 
 ```ssh
-apt install -y icinga2-ido-mysql
+apt install -y Icinga2-ido-mysql
 ```
 
 You will be asked again for configuration steps:
 
 1. You will be asked to enable the ido-mysql feature. Select Yes to continue.
 2. You will be prompted to set up the driver and create a database using the dbconfig-common utility. Select Yes to continue.
-3. You will be asked for the MySQL password for the icinga2 database. Enter the password you configured previously to continue.
+3. You will be asked for the MySQL password for the Icinga2 database. Enter the password you configured previously to continue.
 4. You will be asked to confirm the password again.
 
-Check the database details in `/etc/icinga2/features-available/ido-mysql.conf`:
+Check the database details in `/etc/Icinga2/features-available/ido-mysql.conf`:
 
 ```ssh
 /**
@@ -218,47 +218,47 @@ Check the database details in `/etc/icinga2/features-available/ido-mysql.conf`:
 library "db_ido_mysql"
 
 object IdoMysqlConnection "ido-mysql" {
-  user = "icinga2",
+  user = "Icinga2",
   password = "sdi",
   host = "localhost",
-  database = "icinga2"
+  database = "Icinga2"
 }
 ```
 
 Restart the Icinga2 Service:
 
 ```ssh
-systemctl restart icinga2
+systemctl restart Icinga2
 ```
 
 You can check the status again:
 
 ```ssh
-systemctl status icinga2
+systemctl status Icinga2
 ```
 
 ## Configure Icinga2 API
 
-The last step before we can configure the web setup is to adjust Icinga's API. Install Icinga Web with `apt-get`:
+The last step before we can configure the web setup is to adjust [Icinga](/acronyms)'s API. Install [Icinga](/acronyms) Web with `apt-get`:
 
 ```ssh
-icinga2 api setup
+Icinga2 api setup
 ```
 
 Notice the output that you get. The end should say something like:
 `Now restart your Icinga 2 daemon to finish the installation!`
 
-We need a new user with minimal permissions required by Icinga Web. Open the api-users.conf file for editing.
+We need a new user with minimal permissions required by [Icinga](/acronyms) Web. Open the api-users.conf file for editing.
 
 ```ssh
-nano /etc/icinga2/conf.d/api-users.conf
+nano /etc/Icinga2/conf.d/api-users.conf
 ```
 
-Append the provided code to the end of the file, and be sure to select a robust password for the API.
+Append the provided code to the end of the file, and be sure to select a robust password for the [API](/acronyms).
 
 ```ssh
-/** api for icingaweb2 */
-object ApiUser "icingaweb2" {
+/** api for Icingaweb2 */
+object ApiUser "Icingaweb2" {
   password = "PassWordApiIcingaWeb2"
   permissions = [ "status/query", "actions/*", "objects/modify/*", "objects/query/*" ]
 }
@@ -268,7 +268,7 @@ Make a note of the credentials which will be needed later on to access the websi
 Restart the service for the changes to be applied:
 
 ```ssh
-systemctl restart icinga2
+systemctl restart Icinga2
 ```
 
 Now we can install the Web Interface:
@@ -278,7 +278,7 @@ Now we can install the Web Interface:
 Let’s install Icinga Web with apt-get:
 
 ```ssh
-apt-get install icingaweb2
+apt-get install Icingaweb2
 ```
 
 We have to adjust the config file:
@@ -301,86 +301,86 @@ systemctl restart apache2
 
 ## Setting up IcingaWeb
 
-We should now be able to access the web interface of Icinga via this URL:
+We should now be able to access the web interface of [Icinga](/acronyms) via this URL:
 
 ```ssh
-http://fw061.g8.sdi.mi.hdm-stuttgart.de/icingaweb2/setup
+http://fw061.g8.sdi.mi.hdm-stuttgart.de/Icingaweb2/setup
 ```
 
 In order to start the configuration process we have to create a token first that we can use to get access:
 
 ```ssh
-icingacli setup token create
+Icingacli setup token create
 ```
 
 Take the token from the output and paste it into the input field `Setup Token` on the website
 
-![icinga - 1](/media/icinga/1.png)
+![Icinga - 1](/media/Icinga/1.png)
 
 As a default configuration we have the monitoring plugin installed. We can leave it like that and click on next.
 
-![icinga - 2](/media/icinga/2.png)
+![Icinga - 2](/media/Icinga/2.png)
 
 We get an overview of the status of systems and configurations. For example which PHP version is installed and which databases are available.
 
-![icinga - 3](/media/icinga/3.png)
+![Icinga - 3](/media/Icinga/3.png)
 
-We can choose the authentication type that we want to use. We could also choose LDAP for authentication. Since we have previously configured our database with users, we choose Database. You will be asked to fill in the database credentials on the next page.
+We can choose the authentication type that we want to use. We could also choose [LDAP](/acronyms) for authentication. Since we have previously configured our database with users, we choose Database. You will be asked to fill in the database credentials on the next page.
 
-![icinga - 4](/media/icinga/4.png)
+![Icinga - 4](/media/Icinga/4.png)
 
-Enter the database credentials you have previously generated. Validate the configuration by clicking the corresponding button. Once the credentials are confirmed, proceed to the next step by clicking Next. You will then be prompted to assign a name to the authentication backend.
+Enter the database credentials you have previously generated. Validate the configuration by clicking the corresponding button. Once the credentials are confirmed, proceed to the next step by clicking `Next`. You will then be prompted to assign a name to the authentication backend.
 
-![icinga - 5](/media/icinga/5.png)
+![Icinga - 5](/media/Icinga/5.png)
 
 Reenter your created credentials.
 
-![icinga - 6](/media/icinga/6.png)
+![Icinga - 6](/media/Icinga/6.png)
 
-Keep the default value and proceed by clicking Next. On the following page, you will be prompted to establish an administrator account.
+Keep the default value and proceed by clicking `Next`. On the following page, you will be prompted to establish an administrator account.
 
-![icinga - 7](/media/icinga/7.png)
+![Icinga - 7](/media/Icinga/7.png)
 
-Input the credentials for your newly created administrator account and proceed by clicking Next.
+Input the credentials for your newly created administrator account that you have created in the section `Configuring MariaDB` and proceed by clicking `Next`.
 
-![icinga - 8](/media/icinga/8.png)
+![Icinga - 8](/media/Icinga/8.png)
 
-Click Next to proceed. You will be asked to review the configuration on the last page.
+Click `Next` to proceed. You will be asked to review the configuration on the last page.
 
-![icinga - 9](/media/icinga/9.png)
+![Icinga - 9](/media/Icinga/9.png)
 
-Feel free to revisit any settings by navigating back. Once you are content with the configurations, click Next to continue.
+Feel free to revisit any settings by navigating back. Once you are content with the configurations, click `Next` to continue.
 
-![icinga - 10](/media/icinga/10.png)
+![Icinga - 10](/media/Icinga/10.png)
 
-Enter the database credentials that you configured earlier and click on Validate Configuration to confirm the connection. After successful verification, proceed by clicking Next. Subsequently, you will be prompted to provide the API details.
+Enter the database credentials that you configured earlier and click on Validate Configuration to confirm the connection. After successful verification, proceed by clicking `Next`. Subsequently, you will be prompted to provide the [API](/acronyms) details.
 
-![icinga - 11](/media/icinga/11.png)
+![Icinga - 11](/media/Icinga/11.png)
 
-Enter the previously generated API credentials, set the Host as 127.0.0.1, and click on Validate Configuration to ensure the connection is valid. Once confirmed, proceed by clicking Next. In the following step, you'll be prompted to select protected custom variables for enhancing security monitoring.
+Enter the previously generated [API](/acronyms) credentials, set the Host as 127.0.0.1, and click on Validate Configuration to ensure the connection is valid. Once confirmed, proceed by clicking `Next`. In the following step, you'll be prompted to select protected custom variables for enhancing security monitoring.
 
-![icinga - 12](/media/icinga/12.png)
+![Icinga - 12](/media/Icinga/12.png)
 
-Maintain the default values and advance by clicking Next. You will be prompted to review the Monitoring configuration. If necessary, you have the option to go back and make changes before finalizing.
+Maintain the default values and advance by clicking `Next`. You will be prompted to review the Monitoring configuration. If necessary, you have the option to go back and make changes before finalizing.
 
-![icinga - 13](/media/icinga/13.png)
+![Icinga - 13](/media/Icinga/13.png)
 
-If you are satisfied with the configurations, proceed to finalize the installation by clicking on the "Finish" button.
+If you are satisfied with the configurations, proceed to finalize the installation by clicking on the `Finish` button.
 
-![icinga - 14](/media/icinga/14.png)
+![Icinga - 14](/media/Icinga/14.png)
 
-After successful completion, click the "Login to Icinga Web 2" button to open the login page at (http://fw061.g8.sdi.mi.hdm-stuttgart.de/icingaweb2/authentication/login).
+After successful completion, click the "Login to [Icinga](/acronyms) Web 2" button to open the login page at (http://fw061.g8.sdi.mi.hdm-stuttgart.de/Icingaweb2/authentication/login).
 
-![icinga - 15](/media/icinga/15.png)
+![Icinga - 15](/media/Icinga/15.png)
 
-You can now log in via Icinga's web interface.
+You can now log in via [Icinga](/acronyms)'s web interface.
 
-![icinga - 16](/media/icinga/16.png)
+![Icinga - 16](/media/Icinga/16.png)
 
-You can now use Icinga on your server!
+You can now use [Icinga](/acronyms) on your server!
 
-![icinga - 17](/media/icinga/17.png)
+![Icinga - 17](/media/Icinga/17.png)
 
 You can go to Overview > Services to check the status of the master server similar to the following:
 
-![icinga - 18](/media/icinga/18.png)
+![Icinga - 18](/media/Icinga/18.png)

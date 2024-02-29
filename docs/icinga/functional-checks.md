@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install nagios-plugins
 ```
 
-Configure http(s) for your web server:
+Configure [HTTP(s)](/acronyms) for your web server:
 
 ```ssh
 sudo nano /etc/nagios-plugins/config/http.cfg
@@ -52,7 +52,7 @@ HTTP CRITICAL - Konnte TCP socket nicht öffnen
 
 ## Ping LDAP
 
-We can use this command to ping our LDAP server:
+We can use this command to ping our [LDAP](/acronyms) server:
 
 ```ssh
 /usr/lib/nagios/plugins/check_ldap -H ldap://vm1.g8.sdi.mi.hdm-stuttgart.de -b "dc=example,dc=com" -D "cn=admin,dc=example,dc=com" -P 'new_password'

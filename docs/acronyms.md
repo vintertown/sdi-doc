@@ -27,3 +27,7 @@
 - CPU = Central Processing Unit
 - TLS = Transport Layer Security
 - VPN = Virtual Private Network
+- HTTP = Hypertext Transfer Protocol
+- HTTPS = Hypertext Transfer Protocol Secure
+- SNMP = Simple Network Management Protocol
+- API = Application Programming Interfaces

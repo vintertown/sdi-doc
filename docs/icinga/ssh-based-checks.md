@@ -1,2 +1,0 @@
-# SSH based checks
-
