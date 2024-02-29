@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Filter based search - My Docs</title>
+        <title>Filter based search - Software defined Infrastructure</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">My Docs</a>
+                <a class="navbar-brand" href="../..">Software defined Infrastructure</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -165,6 +165,31 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Icinga <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../icinga/general/" class="dropdown-item">General</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/set-up/" class="dropdown-item">Set Up</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/functional-checks/" class="dropdown-item">Functional Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/snmp-based-checks/" class="dropdown-item">SNMP Checks</a>
+</li>
+                                    
+<li>
+    <a href="../../icinga/ssh-based-checks/" class="dropdown-item">SSH Checks</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="navitem">
                                 <a href="../../acronyms/" class="nav-link">Acronyms</a>
                             </li>
@@ -230,6 +255,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -238,7 +267,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="filter-based-search">Filter based search</h1>
-<p>We use ldapsearch to perform search operations on LDAP.</p>
+<p>We use <code>ldapsearch</code> to perform search operations on <a href="/acronyms">LDAP</a>.</p>
 <h2 id="all-users-with-a-uid-attribute-value-starting-with-the-letter-b">All users with a uid attribute value starting with the letter “b”</h2>
 <pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=example,dc=com&quot; &quot;(uid=b*)&quot;
 </code></pre>
@@ -288,6 +317,7 @@ result: 0 Success
 <h2 id="all-entries-with-either-a-defined-uid-attribute-or-a-ou-attribute-starting-with-letter-d">All entries with either a defined uid attribute or a ou attribute starting with letter “d”</h2>
 <pre><code class="language-ssh">ldapsearch -x -D &quot;cn=admin,dc=betrayer,dc=com&quot; -W -b &quot;dc=betrayer,dc=com&quot; &quot;(|(uid=*)(ou=d*))&quot;
 </code></pre>
+<p>Answer:</p>
 <pre><code class="language-ssh"># extended LDIF
 #
 # LDAPv3
@@ -492,7 +522,11 @@ search: 2
 result: 0 Success
 
 # numResponses: 1
-</code></pre></div>
+</code></pre>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://docs.oracle.com/cd/E19693-01/819-0997/auto45/index.html">www.docs.oracle.com/cd/E19693-01/819-0997/auto45/index.html</a></li>
+</ol></div>
             </div>
         </div>
 
