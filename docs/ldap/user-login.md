@@ -71,6 +71,21 @@ nano /etc/hosts
 ```
 
 For installing the [LDAP](/acronyms) client we use the exact instructions like in this one here [www.computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/](https://computingforgeeks.com/how-to-configure-ubuntu-as-ldap-client/)
+
+First you can include the LDAP server address in the /etc/hosts file in case there is no operational DNS server in your network.
+
+```ssh
+sudo nano /etc/hosts
+```
+
+Then install the [LDAP](/acronyms) client with the following command:
+
+```ssh
+apt -y install libnss-ldap libpam-ldap ldap-utils
+```
+
+Afterwards a configuration panel starts. You can configure [LDAP](/acronyms) with the following configurations:
+
 ## References
 
 1. [www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux](https://www.ibm.com/docs/de/netcoolomnibus/8.1?topic=authentication-pam-unix-linux)
